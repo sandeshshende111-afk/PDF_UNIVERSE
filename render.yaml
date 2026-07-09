@@ -3,7 +3,7 @@ services:
     name: pdfuniverse
     runtime: node
     plan: free
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run build
+    buildCommand: npx --yes pnpm@11.7.0 install --frozen-lockfile && npx --yes pnpm@11.7.0 run build
     startCommand: node server.js
     envVars:
       - key: NODE_ENV
