@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PDFUniverse Pro — Unlimited PDF Tools + AI Features</title>
+<meta name="description" content="Upgrade to PDFUniverse Pro for unlimited PDF processing, AI summarization, e-signature, batch processing and more. Start free trial today."/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#07090f;color:#f1f5f9;-webkit-font-smoothing:antialiased;min-height:100vh}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;line-height:1.15}
+.gradient{background:linear-gradient(135deg,#6366f1,#8b5cf6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-gold{background:linear-gradient(135deg,#f59e0b,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+a{color:inherit;text-decoration:none}
+
+/* ── Nav ── */
+.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid #ffffff08;background:#07090fee;backdrop-filter:blur(20px);padding:0 24px}
+.nav-inner{max-width:1060px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Sora',sans-serif;font-weight:900;font-size:17px;color:#fff;cursor:pointer}
+.back-link{font-size:13px;color:#64748b;border:1px solid #ffffff0f;border-radius:8px;padding:6px 14px;transition:all 0.15s}
+.back-link:hover{color:#94a3b8;border-color:#ffffff20}
+
+/* ── Hero ── */
+.hero{text-align:center;padding:72px 24px 60px;position:relative;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+.hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.pill{display:inline-flex;align-items:center;gap:7px;background:#f59e0b18;border:1px solid #f59e0b33;border-radius:99px;padding:5px 16px;font-size:12px;font-weight:700;color:#fbbf24;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:22px}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:900;letter-spacing:-0.03em;margin-bottom:18px}
+.hero p{color:#94a3b8;font-size:18px;line-height:1.65;max-width:560px;margin:0 auto 36px}
+.trust-strip{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:13px;color:#64748b;font-weight:500}
+.trust-item span{color:#10b981}
+
+/* ── Pricing cards ── */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:960px;margin:0 auto 64px;padding:0 24px}
+.plan-card{border-radius:22px;padding:32px;border:1px solid #ffffff0d;background:#0f1322;transition:all 0.25s;position:relative;overflow:hidden}
+.plan-card.popular{background:linear-gradient(160deg,#1e1b4b 0%,#2d1b5e 100%);border-color:#6366f144;box-shadow:0 20px 60px rgba(99,102,241,0.25)}
+.plan-name{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#64748b;margin-bottom:14px}
+.plan-name.pro-name{color:#a5b4fc}
+.plan-price{display:flex;align-items:flex-end;gap:4px;margin-bottom:6px}
+.plan-price .amount{font-family:'Sora',sans-serif;font-size:52px;font-weight:900;line-height:1;letter-spacing:-0.03em;color:#fff}
+.plan-price .period{font-size:14px;color:#64748b;margin-bottom:8px}
+.plan-save{font-size:12px;color:#10b981;font-weight:700;margin-bottom:24px;min-height:18px}
+.plan-features{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
+.plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#cbd5e1;line-height:1.5}
+.plan-features li .check{width:18px;height:18px;border-radius:99px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;margin-top:1px}
+.check-yes{background:#6366f120;color:#818cf8}
+.check-gold{background:#f59e0b20;color:#f59e0b}
+.plan-cta{width:100%;padding:14px;border-radius:14px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;transition:all 0.2s;border:none}
+.cta-primary{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;box-shadow:0 8px 28px rgba(99,102,241,0.4)}
+.cta-primary:hover{box-shadow:0 12px 40px rgba(99,102,241,0.6);transform:translateY(-1px)}
+.cta-gold{background:linear-gradient(135deg,#f59e0b,#f97316);color:#fff;box-shadow:0 8px 28px rgba(245,158,11,0.35)}
+.cta-gold:hover{box-shadow:0 12px 40px rgba(245,158,11,0.5);transform:translateY(-1px)}
+.cta-ghost{background:#ffffff08;color:#64748b;border:1px solid #ffffff10}
+.cta-ghost:hover{border-color:#ffffff20;color:#94a3b8}
+.popular-badge{position:absolute;top:20px;right:20px;background:#6366f1;color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:99px;letter-spacing:0.07em;text-transform:uppercase}
+
+/* ── Feature grid ── */
+.features-section{max-width:1060px;margin:0 auto 72px;padding:0 24px}
+.features-header{text-align:center;margin-bottom:44px}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.feature-card{background:#0f1322;border:1px solid #ffffff0d;border-radius:18px;padding:24px;transition:all 0.2s}
+.feature-card:hover{border-color:#6366f133;transform:translateY(-2px)}
+.feature-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.feature-title{font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:6px}
+.feature-desc{font-size:13px;color:#64748b;line-height:1.65}
+
+/* ── Comparison table ── */
+.comparison{max-width:780px;margin:0 auto 72px;padding:0 24px}
+.comp-table{width:100%;border-collapse:collapse;font-size:13.5px}
+.comp-table th{padding:12px 16px;text-align:left;background:#0f1322;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#64748b}
+.comp-table th:not(:first-child){text-align:center}
+.comp-table td{padding:13px 16px;border-bottom:1px solid #ffffff06;color:#94a3b8;vertical-align:middle}
+.comp-table td:first-child{color:#cbd5e1;font-weight:500}
+.comp-table td:not(:first-child){text-align:center}
+.comp-table tr:hover td{background:#ffffff02}
+.yes{color:#10b981;font-size:16px}
+.no{color:#374151;font-size:16px}
+.comp-header{background:#0f1322}
+
+/* ── Email capture ── */
+.waitlist-section{max-width:580px;margin:0 auto 80px;padding:0 24px;text-align:center}
+.waitlist-card{background:linear-gradient(160deg,#1e1b4b,#2d1b5e);border:1px solid #6366f133;border-radius:24px;padding:40px 36px}
+.waitlist-card h2{font-size:28px;font-weight:900;color:#fff;margin-bottom:10px}
+.waitlist-card p{color:#a5b4fc;font-size:15px;margin-bottom:28px;line-height:1.6}
+.email-form{display:flex;gap:10px;flex-wrap:wrap}
+.email-input{flex:1;min-width:200px;padding:13px 16px;border-radius:12px;background:#0b0f1a;border:1px solid #6366f133;color:#f1f5f9;font-size:14px;font-family:inherit;outline:none;transition:border-color 0.15s}
+.email-input:focus{border-color:#6366f1}
+.email-input::placeholder{color:#4c1d95}
+.submit-btn{padding:13px 24px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all 0.2s}
+.submit-btn:hover{box-shadow:0 8px 28px rgba(99,102,241,0.5)}
+
+/* ── Social proof ── */
+.reviews{max-width:960px;margin:0 auto 72px;padding:0 24px}
+.review-card{background:#0f1322;border:1px solid #ffffff0d;border-radius:18px;padding:24px}
+.review-stars{color:#f59e0b;font-size:14px;margin-bottom:10px}
+.review-text{font-size:14px;color:#94a3b8;line-height:1.65;margin-bottom:14px;font-style:italic}
+.review-author{display:flex;align-items:center;gap:10px}
+.review-avatar{width:36px;height:36px;border-radius:99px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff}
+.review-name{font-size:13px;font-weight:700;color:#f1f5f9}
+.review-role{font-size:11px;color:#64748b;margin-top:1px}
+
+/* ── Guarantee ── */
+.guarantee{text-align:center;max-width:480px;margin:0 auto 80px;padding:0 24px}
+.guarantee-box{background:#10b98110;border:1px solid #10b98133;border-radius:20px;padding:32px}
+
+/* ── Footer ── */
+.footer{border-top:1px solid #ffffff06;padding:28px 24px;text-align:center;color:#374151;font-size:12px}
+
+@media(max-width:600px){.email-form{flex-direction:column}.plans{grid-template-columns:1fr}.plan-card.popular{transform:none}}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">PDF<span style="color:#6366f1">Universe</span></div>
+    <a href="/" class="back-link">← Back to Tools</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="orb" style="width:500px;height:500px;top:-150px;left:20%;background:radial-gradient(circle,#6366f120,transparent 70%)"></div>
+  <div class="orb" style="width:400px;height:400px;bottom:-100px;right:10%;background:radial-gradient(circle,#8b5cf620,transparent 70%)"></div>
+  <div class="hero-inner">
+    <div class="pill">⭐ Limited Launch Pricing · Save 40% Today</div>
+    <h1>Go Pro. <span class="gradient">Do More.</span></h1>
+    <p>Unlock unlimited PDF processing, AI-powered tools, batch operations, and priority support. Built for professionals who work with PDFs every day.</p>
+    <div class="trust-strip">
+      <div class="trust-item"><span>✓</span> 30-day money-back guarantee</div>
+      <div class="trust-item"><span>✓</span> Cancel anytime</div>
+      <div class="trust-item"><span>✓</span> No credit card for trial</div>
+      <div class="trust-item"><span>✓</span> Instant access</div>
+    </div>
+  </div>
+</div>
+
+<!-- Pricing Plans -->
+<div class="plans">
+
+  <!-- Free -->
+  <div class="plan-card">
+    <div class="plan-name">Free Forever</div>
+    <div class="plan-price"><span class="amount">$0</span><span class="period">/month</span></div>
+    <div class="plan-save">&nbsp;</div>
+    <ul class="plan-features">
+      <li><div class="check check-yes">✓</div>5 tasks per day</li>
+      <li><div class="check check-yes">✓</div>Up to 50MB per file</li>
+      <li><div class="check check-yes">✓</div>9 basic PDF tools</li>
+      <li><div class="check check-yes">✓</div>Dark & light mode</li>
+      <li><div class="check" style="background:#ffffff06;color:#374151">✗</div><span style="color:#374151">AI features</span></li>
+      <li><div class="check" style="background:#ffffff06;color:#374151">✗</div><span style="color:#374151">Batch processing</span></li>
+      <li><div class="check" style="background:#ffffff06;color:#374151">✗</div><span style="color:#374151">E-signature</span></li>
+    </ul>
+    <button class="plan-cta cta-ghost" onclick="window.location.href='/'">Use Free Plan</button>
+  </div>
+
+  <!-- Pro (Popular) -->
+  <div class="plan-card popular">
+    <div class="popular-badge">MOST POPULAR</div>
+    <div class="plan-name pro-name">Pro</div>
+    <div class="plan-price">
+      <span class="amount" id="proAmt">$12</span>
+      <span class="period" id="proPer">/month</span>
+    </div>
+    <div class="plan-save" id="proSave">&nbsp;</div>
+    <ul class="plan-features">
+      <li><div class="check check-gold">✓</div>Unlimited tasks</li>
+      <li><div class="check check-gold">✓</div>Up to 2GB per file</li>
+      <li><div class="check check-gold">✓</div>All 14+ PDF tools</li>
+      <li><div class="check check-gold">✓</div>🤖 AI Summarizer & Q&A</li>
+      <li><div class="check check-gold">✓</div>✍️ E-Signature tool</li>
+      <li><div class="check check-gold">✓</div>Batch processing (50 files)</li>
+      <li><div class="check check-gold">✓</div>Processing history</li>
+      <li><div class="check check-gold">✓</div>Priority support</li>
+      <li><div class="check check-gold">✓</div>API access</li>
+      <li><div class="check check-gold">✓</div>No watermarks</li>
+    </ul>
+    <button class="plan-cta cta-gold" id="proBtn" onclick="handleProClick()">⚡ Start Pro — 7 Days Free</button>
+    <p style="text-align:center;font-size:11px;color:#7c3aed;margin-top:10px">No credit card required for trial</p>
+  </div>
+
+  <!-- Team -->
+  <div class="plan-card">
+    <div class="plan-name">Team</div>
+    <div class="plan-price"><span class="amount" id="teamAmt">$29</span><span class="period" id="teamPer">/month</span></div>
+    <div class="plan-save" id="teamSave">&nbsp;</div>
+    <ul class="plan-features">
+      <li><div class="check check-yes">✓</div>Everything in Pro</li>
+      <li><div class="check check-yes">✓</div>Up to 10 team members</li>
+      <li><div class="check check-yes">✓</div>Team admin dashboard</li>
+      <li><div class="check check-yes">✓</div>Custom branding</li>
+      <li><div class="check check-yes">✓</div>SAML SSO</li>
+      <li><div class="check check-yes">✓</div>SLA guarantee</li>
+      <li><div class="check check-yes">✓</div>Dedicated support</li>
+    </ul>
+    <button class="plan-cta cta-primary" onclick="handleTeamClick()">Start Team Trial</button>
+  </div>
+</div>
+
+<!-- Annual toggle -->
+<div style="text-align:center;margin-top:-44px;margin-bottom:48px">
+  <div style="display:inline-flex;align-items:center;gap:10px;background:#0f1322;border:1px solid #ffffff0d;border-radius:99px;padding:6px 14px">
+    <span style="font-size:13px;font-weight:600;color:#64748b">Monthly</span>
+    <button onclick="toggleAnnual()" style="width:44px;height:24px;border-radius:99px;background:#6366f1;border:none;cursor:pointer;position:relative;transition:all 0.2s" id="annualBtn">
+      <div id="annualDot" style="width:18px;height:18px;background:#fff;border-radius:99px;position:absolute;top:3px;left:3px;transition:all 0.2s"></div>
+    </button>
+    <span style="font-size:13px;font-weight:700;color:#10b981">Annual <span style="font-size:11px">(Save 25%)</span></span>
+  </div>
+</div>
+
+<!-- Key Features Grid -->
+<div class="features-section">
+  <div class="features-header">
+    <h2 style="font-size:32px;font-weight:900;color:#fff;margin-bottom:10px">Everything you get with Pro</h2>
+    <p style="color:#64748b;font-size:15px">A complete professional PDF workspace</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#6366f120">🤖</div>
+      <div class="feature-title">AI Summarizer</div>
+      <div class="feature-desc">Upload any PDF and get an instant executive summary, key bullet points, and answers to specific questions — powered by Claude AI.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#f59e0b20">✍️</div>
+      <div class="feature-title">E-Signature</div>
+      <div class="feature-desc">Draw or type your signature and apply it to any PDF. Save signatures for reuse. Apply to single page or entire document.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#10b98120">📦</div>
+      <div class="feature-title">Batch Processing</div>
+      <div class="feature-desc">Process up to 50 files at once. Compress, rotate, or watermark your entire document library in seconds instead of hours.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#ec489920">🔍</div>
+      <div class="feature-title">OCR Technology</div>
+      <div class="feature-desc">Turn scanned PDFs and images into searchable, editable text. Supports 30+ languages including Arabic, Chinese, and Hindi.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#06b6d420">⚡</div>
+      <div class="feature-title">Unlimited Tasks</div>
+      <div class="feature-desc">No daily limits. Process as many PDFs as you need, 24/7. Files up to 2GB each — handle the largest documents effortlessly.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" style="background:#8b5cf620">🔌</div>
+      <div class="feature-title">API Access</div>
+      <div class="feature-desc">Integrate PDF processing into your own apps. RESTful API with clear documentation. Postman collection included.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Comparison Table -->
+<div class="comparison">
+  <h2 style="font-size:26px;font-weight:900;color:#fff;text-align:center;margin-bottom:24px">Free vs Pro — Side by Side</h2>
+  <div style="background:#0f1322;border:1px solid #ffffff0d;border-radius:18px;overflow:hidden">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th style="width:50%">Feature</th>
+          <th style="width:25%">Free</th>
+          <th style="width:25%;color:#a5b4fc">Pro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Daily task limit</td><td>5/day</td><td style="color:#a5b4fc;font-weight:700">Unlimited</td></tr>
+        <tr><td>Max file size</td><td>50 MB</td><td style="color:#a5b4fc;font-weight:700">2 GB</td></tr>
+        <tr><td>PDF tools</td><td>9 tools</td><td style="color:#a5b4fc;font-weight:700">14+ tools</td></tr>
+        <tr><td>AI Summarizer</td><td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>AI Q&A</td><td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>E-Signature</td><td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>Batch processing</td><td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>OCR (text recognition)</td><td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>Processing history</td><td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>API access</td><td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>Priority support</td><td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>Custom branding</td><td class="no">✗</td><td class="yes">✓ (Team)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Reviews -->
+<div class="reviews">
+  <h2 style="font-size:26px;font-weight:900;color:#fff;text-align:center;margin-bottom:28px">What Pro users say</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"The AI summarizer alone is worth the $12/month. I review contracts daily — now I get key points in 10 seconds instead of reading 40 pages."</div>
+      <div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Sarah K.</div><div class="review-role">Legal Consultant</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Batch compression saved me 4 hours last week. I had 200 scanned documents to prepare — PDFUniverse Pro handled all of them in under 3 minutes."</div>
+      <div class="review-author"><div class="review-avatar">M</div><div><div class="review-name">Marcus T.</div><div class="review-role">Office Manager</div></div></div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Finally ditched Adobe Acrobat. PDFUniverse Pro does everything I needed at 1/15th the cost. The e-signature feature is surprisingly polished."</div>
+      <div class="review-author"><div class="review-avatar">R</div><div><div class="review-name">Raj P.</div><div class="review-role">Freelance Designer</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 30-day guarantee -->
+<div class="guarantee">
+  <div class="guarantee-box">
+    <div style="font-size:48px;margin-bottom:14px">🛡️</div>
+    <h3 style="font-size:20px;font-weight:800;color:#fff;margin-bottom:8px">30-Day Money-Back Guarantee</h3>
+    <p style="font-size:14px;color:#6ee7b7;line-height:1.65">Not satisfied? Email us within 30 days and get a full refund — no questions asked, no hoops to jump through. We're confident you'll love Pro.</p>
+  </div>
+</div>
+
+<!-- Email Capture / Waitlist -->
+<div class="waitlist-section">
+  <div class="waitlist-card">
+    <div style="font-size:40px;margin-bottom:14px">🚀</div>
+    <h2>Not ready to pay yet?</h2>
+    <p>Join the waitlist and get 14 days of Pro free when we launch new features. No spam — just product updates.</p>
+    <div class="email-form" id="waitlistForm">
+      <input type="email" id="waitEmail" class="email-input" placeholder="your@email.com"/>
+      <button class="submit-btn" onclick="joinWaitlist()">Get 14 Days Free →</button>
+    </div>
+    <p id="waitlistSuccess" style="display:none;color:#10b981;font-weight:600;font-size:14px;margin-top:12px">✓ You're on the list! We'll email you when it's ready.</p>
+    <p style="font-size:11px;color:#4c1d95;margin-top:12px">No spam · Unsubscribe anytime · 100% free</p>
+  </div>
+</div>
+
+<!-- Final CTA -->
+<div style="text-align:center;padding:0 24px 80px">
+  <h2 style="font-size:36px;font-weight:900;color:#fff;margin-bottom:14px">Ready to go Pro?</h2>
+  <p style="color:#64748b;font-size:15px;margin-bottom:28px">Start your 7-day free trial. No credit card required.</p>
+  <button onclick="handleProClick()" class="plan-cta cta-gold" style="display:inline-block;padding:16px 48px;font-size:16px;border-radius:16px">⚡ Start Free Trial →</button>
+</div>
+
+<footer class="footer">
+  <p>© 2025 PDFUniverse · <a href="/privacy" style="color:#374151">Privacy</a> · <a href="/terms" style="color:#374151">Terms</a> · <a href="/contact" style="color:#374151">Contact</a></p>
+</footer>
+
+<script>
+let isAnnual = false;
+
+function toggleAnnual() {
+  isAnnual = !isAnnual;
+  const dot = document.getElementById('annualDot');
+  dot.style.transform = isAnnual ? 'translateX(20px)' : 'translateX(0)';
+  document.getElementById('proAmt').textContent  = isAnnual ? '$9'  : '$12';
+  document.getElementById('teamAmt').textContent = isAnnual ? '$22' : '$29';
+  document.getElementById('proPer').textContent  = isAnnual ? '/mo, billed annually' : '/month';
+  document.getElementById('teamPer').textContent = isAnnual ? '/mo, billed annually' : '/month';
+  document.getElementById('proSave').textContent  = isAnnual ? '💰 You save $36/year!' : '';
+  document.getElementById('teamSave').textContent = isAnnual ? '💰 You save $84/year!' : '';
+}
+
+function handleProClick() {
+  // ─── REPLACE THIS URL WITH YOUR STRIPE PAYMENT LINK ───
+  // How to get your Stripe link:
+  // 1. Go to dashboard.stripe.com
+  // 2. Products → Add Product → "PDFUniverse Pro" → $12/month
+  // 3. Payment Links → Create link
+  // 4. Copy the link and replace the URL below
+  const stripeProLink = 'https://buy.stripe.com/YOUR_PRO_PAYMENT_LINK';
+  
+  // If no Stripe link yet, show waitlist
+  if (stripeProLink.includes('YOUR_PRO')) {
+    document.querySelector('.waitlist-section').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('waitEmail').focus();
+    return;
+  }
+  window.open(stripeProLink, '_blank');
+}
+
+function handleTeamClick() {
+  // ─── REPLACE WITH YOUR STRIPE TEAM PAYMENT LINK ───
+  const stripeTeamLink = 'https://buy.stripe.com/YOUR_TEAM_PAYMENT_LINK';
+  if (stripeTeamLink.includes('YOUR_TEAM')) {
+    document.querySelector('.waitlist-section').scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+  window.open(stripeTeamLink, '_blank');
+}
+
+function joinWaitlist() {
+  const email = document.getElementById('waitEmail').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('waitEmail').style.borderColor = '#ef4444';
+    return;
+  }
+  // Save to localStorage (in production, send to your email service)
+  const list = JSON.parse(localStorage.getItem('pdfuniverse_waitlist') || '[]');
+  list.push({ email, date: new Date().toISOString() });
+  localStorage.setItem('pdfuniverse_waitlist', JSON.stringify(list));
+  
+  document.getElementById('waitlistForm').style.display = 'none';
+  document.getElementById('waitlistSuccess').style.display = 'block';
+  
+  // In production: POST to your email service (Mailchimp, Resend, etc.)
+  // fetch('https://your-api.com/waitlist', { method:'POST', body: JSON.stringify({email}) })
+}
+</script>
+</body>
+</html>

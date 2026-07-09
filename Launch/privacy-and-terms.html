@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Privacy Policy — PDFUniverse</title>
+<meta name="robots" content="noindex"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0b0f1a;color:#cbd5e1;-webkit-font-smoothing:antialiased;line-height:1.75}
+h1,h2,h3{font-family:'Sora',system-ui,sans-serif;color:#f1f5f9;line-height:1.2}
+a{color:#818cf8}
+nav{background:#07090f;border-bottom:1px solid #ffffff08;padding:0 24px;position:sticky;top:0;z-index:50}
+.nav-inner{max-width:900px;margin:0 auto;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Sora',sans-serif;font-weight:900;font-size:16px;color:#fff;text-decoration:none}
+.back{font-size:13px;color:#64748b;text-decoration:none;border:1px solid #ffffff0f;padding:6px 14px;border-radius:8px;transition:all .15s}
+.back:hover{color:#94a3b8;border-color:#ffffff20}
+
+/* Page switcher */
+.page-tabs{display:flex;gap:4px;background:#0f1322;border:1px solid #ffffff0d;border-radius:12px;padding:4px;max-width:360px;margin:36px auto 0}
+.ptab{flex:1;padding:9px 16px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s;border:none;font-family:inherit;color:#64748b;background:transparent}
+.ptab.active{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff}
+
+.page{display:none}
+.page.active{display:block}
+.content{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.last-updated{font-size:12px;color:#374151;margin-bottom:36px;display:flex;align-items:center;gap:8px}
+.last-updated span{background:#6366f120;color:#818cf8;border:1px solid #6366f130;border-radius:6px;padding:2px 10px;font-weight:700;font-size:11px}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;letter-spacing:-.02em;margin-bottom:10px}
+h2{font-size:20px;font-weight:800;margin:40px 0 12px;padding-bottom:10px;border-bottom:1px solid #ffffff08}
+h3{font-size:16px;font-weight:700;margin:22px 0 8px;color:#e2e8f0}
+p{font-size:15px;margin-bottom:14px;color:#94a3b8}
+ul{padding-left:20px;margin-bottom:14px}
+li{font-size:15px;color:#94a3b8;margin-bottom:6px;line-height:1.65}
+strong{color:#e2e8f0;font-weight:600}
+.highlight{background:#6366f115;border:1px solid #6366f130;border-radius:12px;padding:18px 20px;margin:20px 0}
+.highlight p{color:#c4b5fd;margin:0;font-size:14px}
+.highlight strong{color:#a5b4fc}
+.contact-box{background:#0f1322;border:1px solid #ffffff0d;border-radius:14px;padding:24px;margin-top:40px}
+.contact-box h3{margin-bottom:10px;font-size:17px}
+.contact-box p{font-size:14px;margin-bottom:8px}
+.rights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.right-card{background:#0f1322;border:1px solid #ffffff0d;border-radius:10px;padding:14px}
+.right-card h4{font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:5px}
+.right-card p{font-size:12.5px;color:#64748b;margin:0}
+
+footer{border-top:1px solid #ffffff06;background:#07090f;padding:24px;text-align:center;font-size:12px;color:#374151}
+footer a{color:#6366f1;text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">PDF<span style="color:#6366f1">Universe</span></a>
+    <a href="/" class="back">← Home</a>
+  </div>
+</nav>
+
+<!-- Tab switcher -->
+<div class="page-tabs">
+  <button class="ptab active" onclick="showPage('privacy',this)">🔒 Privacy Policy</button>
+  <button class="ptab" onclick="showPage('terms',this)">📄 Terms of Service</button>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     PRIVACY POLICY
+════════════════════════════════════════════════════════════ -->
+<div id="page-privacy" class="page active">
+<div class="content">
+  <h1>Privacy Policy</h1>
+  <div class="last-updated"><span>Last Updated</span> January 1, 2025 · Effective Immediately</div>
+
+  <div class="highlight">
+    <p><strong>Short version:</strong> PDFUniverse processes PDF files locally in your browser. We never read, store, or share your documents. Files never touch our servers during basic operations. We collect only the minimum data needed to run the service.</p>
+  </div>
+
+  <p>PDFUniverse ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains what information we collect, how we use it, and your rights regarding your data. By using PDFUniverse, you agree to this policy.</p>
+
+  <h2>1. Information We Collect</h2>
+
+  <h3>1.1 Information You Provide Directly</h3>
+  <ul>
+    <li><strong>Account information:</strong> When you create an account, we collect your name and email address.</li>
+    <li><strong>Payment information:</strong> If you subscribe to a paid plan, payment is processed by Stripe. We never store your full credit card number — only the last 4 digits and expiry date for display purposes.</li>
+    <li><strong>Communications:</strong> If you contact us by email, we retain those communications to respond and improve support.</li>
+  </ul>
+
+  <h3>1.2 Files You Process</h3>
+  <p><strong>For browser-based tools (most tools):</strong> Your PDF files are processed entirely within your web browser using JavaScript. The files never leave your device and are never uploaded to our servers. We cannot access, read, or store these files.</p>
+  <p><strong>For server-based tools (Pro AI features only):</strong> When you use AI Summarization or OCR features, the document text (not the file itself) is sent to our AI processing partner (Anthropic) to generate a response. This text is not stored beyond the processing of your request.</p>
+
+  <h3>1.3 Automatically Collected Information</h3>
+  <ul>
+    <li><strong>Usage data:</strong> We collect anonymized information about which tools are used and how often, to improve the service. This data cannot identify you personally.</li>
+    <li><strong>Device information:</strong> Browser type, operating system, and screen resolution — used to ensure the site works correctly across devices.</li>
+    <li><strong>IP address:</strong> Logged by our hosting provider (Netlify) for security and abuse prevention. Retained for 30 days.</li>
+    <li><strong>Cookies:</strong> We use essential cookies for authentication (keeping you logged in). We do not use advertising or tracking cookies.</li>
+  </ul>
+
+  <h2>2. How We Use Your Information</h2>
+  <ul>
+    <li>To provide, maintain, and improve the PDFUniverse service</li>
+    <li>To process payments and manage your subscription</li>
+    <li>To send transactional emails (receipts, password resets, service notices)</li>
+    <li>To send product updates and newsletters (only if you opted in; unsubscribe any time)</li>
+    <li>To prevent fraud, abuse, and violations of our Terms of Service</li>
+    <li>To comply with legal obligations</li>
+  </ul>
+  <p><strong>We never sell your personal data to any third party. We never use your data for advertising targeting.</strong></p>
+
+  <h2>3. Data Retention</h2>
+  <ul>
+    <li><strong>Browser-processed files:</strong> Never retained (processed locally, never sent to us)</li>
+    <li><strong>Server-processed files (Pro AI features):</strong> Automatically deleted within 1 hour of processing</li>
+    <li><strong>Account data:</strong> Retained while your account is active. Deleted within 30 days of account deletion request.</li>
+    <li><strong>Payment records:</strong> Retained for 7 years as required by financial regulations</li>
+    <li><strong>Server logs (IP addresses):</strong> Retained for 30 days, then automatically deleted</li>
+  </ul>
+
+  <h2>4. Third Parties We Work With</h2>
+  <p>We share data with the following categories of third parties only to operate our service:</p>
+  <ul>
+    <li><strong>Stripe</strong> — payment processing. Governed by <a href="https://stripe.com/privacy" target="_blank">Stripe's Privacy Policy</a>.</li>
+    <li><strong>Anthropic</strong> — AI processing for Pro features. Text content sent for AI analysis. Governed by <a href="https://anthropic.com/privacy" target="_blank">Anthropic's Privacy Policy</a>.</li>
+    <li><strong>Netlify</strong> — website hosting. IP addresses and access logs per their privacy policy.</li>
+    <li><strong>Resend / Mailchimp</strong> — email delivery. Email addresses shared to send you emails you've requested.</li>
+  </ul>
+  <p>We do not share your data with advertisers, data brokers, or any other third parties not listed above.</p>
+
+  <h2>5. Your Rights (GDPR & CCPA)</h2>
+  <p>Depending on where you live, you have the following rights regarding your personal data:</p>
+  <div class="rights-grid">
+    <div class="right-card"><h4>🔍 Right to Access</h4><p>Request a copy of all personal data we hold about you.</p></div>
+    <div class="right-card"><h4>✏️ Right to Correct</h4><p>Request correction of inaccurate data.</p></div>
+    <div class="right-card"><h4>🗑 Right to Delete</h4><p>Request deletion of your account and all associated data.</p></div>
+    <div class="right-card"><h4>📦 Right to Portability</h4><p>Receive your data in a machine-readable format.</p></div>
+    <div class="right-card"><h4>⛔ Right to Object</h4><p>Object to certain uses of your data (e.g., marketing).</p></div>
+    <div class="right-card"><h4>⏸ Right to Restrict</h4><p>Request we limit processing of your data.</p></div>
+  </div>
+  <p>To exercise any of these rights, email <strong>privacy@pdfuniverse.app</strong>. We respond to all requests within 30 days.</p>
+  <p><strong>California residents (CCPA):</strong> You have the right to know what personal information is collected, request deletion, and opt out of sale (we do not sell data). Contact us at privacy@pdfuniverse.app.</p>
+
+  <h2>6. Security</h2>
+  <p>We implement industry-standard security measures including:</p>
+  <ul>
+    <li>HTTPS encryption for all data in transit (TLS 1.3)</li>
+    <li>AES-256 encryption for any data stored at rest</li>
+    <li>Regular security audits and dependency updates</li>
+    <li>Minimal data collection (we don't store what we don't need)</li>
+    <li>Strict access controls — only authorized team members can access user data</li>
+  </ul>
+  <p>No system is 100% secure. If you discover a security vulnerability, please report it responsibly to security@pdfuniverse.app.</p>
+
+  <h2>7. Children's Privacy</h2>
+  <p>PDFUniverse is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has provided us data, contact us at privacy@pdfuniverse.app and we will delete it immediately.</p>
+
+  <h2>8. International Transfers</h2>
+  <p>PDFUniverse is operated from [Your Country]. If you access our services from the European Economic Area, UK, or Switzerland, your data may be transferred internationally. We ensure such transfers comply with GDPR requirements through Standard Contractual Clauses or adequacy decisions.</p>
+
+  <h2>9. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy occasionally. We'll notify you of significant changes by email (if you have an account) and by updating the "Last Updated" date above. Continued use after changes constitutes acceptance of the new policy.</p>
+
+  <div class="contact-box">
+    <h3>📧 Contact Our Privacy Team</h3>
+    <p>Questions, requests, or concerns about your privacy:</p>
+    <p><strong>Email:</strong> privacy@pdfuniverse.app</p>
+    <p><strong>Response time:</strong> Within 30 days (usually much faster)</p>
+    <p><strong>Postal:</strong> PDFUniverse Inc., [Your Address]</p>
+    <p style="margin-top:12px;font-size:13px;color:#64748b">If you're in the EU and believe we've violated GDPR, you have the right to lodge a complaint with your local Data Protection Authority.</p>
+  </div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     TERMS OF SERVICE
+════════════════════════════════════════════════════════════ -->
+<div id="page-terms" class="page">
+<div class="content">
+  <h1>Terms of Service</h1>
+  <div class="last-updated"><span>Last Updated</span> January 1, 2025 · Effective Immediately</div>
+
+  <div class="highlight">
+    <p><strong>Short version:</strong> Use PDFUniverse legally and in good faith. Don't use it to process illegal content. We provide the service "as is." You can cancel anytime. We can terminate your account if you violate these terms.</p>
+  </div>
+
+  <p>These Terms of Service ("Terms") constitute a legally binding agreement between you and PDFUniverse Inc. ("PDFUniverse," "we," "us"). By accessing or using our website or services, you agree to be bound by these Terms. Please read them carefully.</p>
+
+  <h2>1. The Service</h2>
+  <p>PDFUniverse provides online tools for processing, converting, editing, and managing PDF documents ("Service"). The Service includes free features available to all users and premium features available to paid subscribers ("Pro" or "Team" plan holders).</p>
+
+  <h3>1.1 Free Plan</h3>
+  <p>Free accounts are limited to 5 tasks per day and file sizes up to 50MB. These limits may change with 30 days' notice. Free accounts have access to basic PDF tools as described on our pricing page.</p>
+
+  <h3>1.2 Paid Plans</h3>
+  <p>Pro and Team plans are billed monthly or annually as selected at purchase. Paid plan features are described on our pricing page and may be updated periodically. We'll notify you of material feature changes with 30 days' notice.</p>
+
+  <h2>2. Acceptable Use</h2>
+  <p>You agree to use PDFUniverse only for lawful purposes. You must NOT use PDFUniverse to:</p>
+  <ul>
+    <li>Process, store, or transmit content that is illegal, harmful, threatening, abusive, harassing, defamatory, obscene, or otherwise objectionable</li>
+    <li>Infringe on intellectual property rights — including processing documents you don't have rights to</li>
+    <li>Attempt to reverse-engineer, decompile, or otherwise extract our source code</li>
+    <li>Use automated tools to make excessive requests (scraping, DDoS)</li>
+    <li>Circumvent usage limits through multiple accounts or other means</li>
+    <li>Resell access to the Service without our written permission</li>
+    <li>Upload malicious files (malware, ransomware, viruses)</li>
+  </ul>
+  <p>We reserve the right to terminate accounts that violate these restrictions without refund.</p>
+
+  <h2>3. Your Content</h2>
+  <p><strong>You retain all rights to your documents.</strong> By using PDFUniverse, you grant us only the limited technical rights necessary to process your files and deliver the Service to you. We claim no ownership over your content.</p>
+  <p>For browser-based processing, your files never leave your device. For server-based features (Pro AI tools), files are processed and automatically deleted within 1 hour.</p>
+
+  <h2>4. Payment & Subscriptions</h2>
+
+  <h3>4.1 Billing</h3>
+  <p>Paid subscriptions are billed in advance on a monthly or annual basis. All prices are in USD unless stated otherwise. Payment is processed by Stripe and you authorize recurring charges to your payment method.</p>
+
+  <h3>4.2 Cancellation</h3>
+  <p>You may cancel your subscription at any time from your account dashboard. Cancellation takes effect at the end of your current billing period — you retain access until then. We do not prorate refunds for partial periods, except as required by law.</p>
+
+  <h3>4.3 Refunds</h3>
+  <p>We offer a <strong>30-day money-back guarantee</strong> on all paid plans. If you're unsatisfied for any reason within 30 days of your first purchase, email billing@pdfuniverse.app for a full refund. Refunds after 30 days are at our discretion.</p>
+
+  <h3>4.4 Price Changes</h3>
+  <p>We may change subscription prices with 30 days' notice sent to your registered email. Price changes take effect at your next renewal. Continuing to use the Service after price changes take effect constitutes acceptance.</p>
+
+  <h2>5. Intellectual Property</h2>
+  <p>PDFUniverse, its logo, design, and all associated trademarks are owned by PDFUniverse Inc. The software and technology underlying the Service is protected by copyright and other intellectual property laws. You may not use our trademarks without prior written consent.</p>
+
+  <h2>6. Disclaimers & Limitation of Liability</h2>
+  <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</p>
+  <p>We do not warrant that the Service will be uninterrupted, error-free, or free of harmful components. While we aim for 99.9% uptime, we do not guarantee any specific uptime SLA on free plans.</p>
+  <p><strong>LIMITATION OF LIABILITY:</strong> To the maximum extent permitted by law, PDFUniverse's total liability for any claim relating to the Service is limited to the amount you paid us in the 12 months preceding the claim. We are not liable for indirect, incidental, special, consequential, or punitive damages.</p>
+
+  <h2>7. Indemnification</h2>
+  <p>You agree to indemnify and hold harmless PDFUniverse and its officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the Service, violation of these Terms, or infringement of any third-party rights.</p>
+
+  <h2>8. Termination</h2>
+  <p>Either party may terminate this agreement at any time. We may suspend or terminate your access immediately if you violate these Terms, engage in fraudulent activity, or if we discontinue the Service. Upon termination, your right to use the Service ceases immediately. We'll provide your account data for 30 days after termination upon request.</p>
+
+  <h2>9. Governing Law & Disputes</h2>
+  <p>These Terms are governed by the laws of [Your State/Country], without regard to conflict of law principles. Any disputes will be resolved through binding arbitration rather than court, except for intellectual property claims or small claims court matters. You waive the right to participate in class action lawsuits regarding the Service.</p>
+
+  <h2>10. Changes to Terms</h2>
+  <p>We may update these Terms periodically. We'll notify you of material changes by email and by updating the "Last Updated" date. Your continued use of the Service after changes constitutes acceptance. If you disagree with changes, you may cancel your subscription before they take effect.</p>
+
+  <h2>11. General Provisions</h2>
+  <ul>
+    <li><strong>Entire Agreement:</strong> These Terms, together with our Privacy Policy, constitute the complete agreement between you and PDFUniverse.</li>
+    <li><strong>Severability:</strong> If any provision is found unenforceable, the remaining provisions remain in effect.</li>
+    <li><strong>Waiver:</strong> Our failure to enforce any provision does not constitute a waiver of our right to enforce it in the future.</li>
+    <li><strong>Assignment:</strong> You may not assign these Terms without our written consent. We may assign them in connection with a merger or acquisition.</li>
+  </ul>
+
+  <div class="contact-box">
+    <h3>📧 Legal & Billing Contact</h3>
+    <p><strong>General:</strong> support@pdfuniverse.app</p>
+    <p><strong>Legal notices:</strong> legal@pdfuniverse.app</p>
+    <p><strong>Billing disputes:</strong> billing@pdfuniverse.app</p>
+    <p><strong>Security:</strong> security@pdfuniverse.app</p>
+    <p style="margin-top:12px;font-size:13px;color:#64748b"><em>This document does not constitute legal advice. If you have specific legal questions, please consult a qualified attorney in your jurisdiction.</em></p>
+  </div>
+</div>
+</div>
+
+<footer>
+  <p>© 2025 PDFUniverse · <a href="/">Home</a> · <a href="/pdfuniverse.html">Tools</a> · <a href="/pro-upgrade.html">Pricing</a></p>
+</footer>
+
+<script>
+function showPage(name, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  btn.classList.add('active');
+  document.title = (name === 'privacy' ? 'Privacy Policy' : 'Terms of Service') + ' — PDFUniverse';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

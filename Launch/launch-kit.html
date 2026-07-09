@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PDFUniverse — Marketing Launch Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0b0f1a;color:#f1f5f9;-webkit-font-smoothing:antialiased;line-height:1.6}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;line-height:1.2}
+.container{max-width:860px;margin:0 auto;padding:40px 24px 100px}
+.hero{text-align:center;padding:56px 0 52px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:#6366f120;color:#818cf8;border:1px solid #6366f133;border-radius:99px;padding:5px 16px;font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:18px}
+.gradient{background:linear-gradient(135deg,#6366f1,#8b5cf6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section{margin-bottom:44px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid #ffffff0f}
+.section-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.section-title{font-size:20px;font-weight:800;color:#f1f5f9}
+.section-sub{font-size:13px;color:#64748b;margin-top:2px}
+.copy-block{background:#0f1322;border:1px solid #ffffff0d;border-radius:14px;overflow:hidden;margin-bottom:14px}
+.copy-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #ffffff08;background:#ffffff04}
+.copy-label{font-size:11px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.08em}
+.copy-btn{display:flex;align-items:center;gap:6px;padding:5px 12px;background:#6366f120;border:1px solid #6366f133;border-radius:7px;color:#818cf8;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s}
+.copy-btn:hover{background:#6366f133;border-color:#6366f1}
+.copy-btn.copied{background:#10b98120;border-color:#10b98144;color:#34d399}
+.copy-text{padding:16px 18px;font-size:13.5px;color:#cbd5e1;line-height:1.75;white-space:pre-wrap;word-break:break-word}
+.copy-text em{color:#818cf8;font-style:normal;font-weight:600}
+.tip{display:flex;gap:10px;padding:12px 16px;background:#f59e0b10;border:1px solid #f59e0b25;border-radius:10px;margin-bottom:14px}
+.tip-icon{flex-shrink:0;margin-top:1px}
+.tip p{font-size:12.5px;color:#fbbf24;line-height:1.6}
+.tip strong{color:#fde68a}
+.grid-2{display:grid;grid-cols:1fr 1fr;grid-template-columns:1fr 1fr;gap:14px}
+.stat-card{background:#0f1322;border:1px solid #ffffff0d;border-radius:12px;padding:16px;text-align:center}
+.stat-val{font-size:26px;font-weight:900;color:#818cf8;font-family:'Sora',sans-serif}
+.stat-label{font-size:11px;color:#64748b;margin-top:3px;font-weight:600}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:#6366f120}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-dot{position:absolute;left:-24px;top:4px;width:12px;height:12px;border-radius:99px;background:#6366f1;border:2px solid #0b0f1a;box-shadow:0 0 0 3px #6366f130}
+.tl-week{font-size:10px;font-weight:800;color:#6366f1;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
+.tl-title{font-size:14px;font-weight:700;color:#f1f5f9;margin-bottom:3px}
+.tl-desc{font-size:12.5px;color:#64748b;line-height:1.6}
+.platform-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:99px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px}
+a{color:#818cf8;text-decoration:none}
+a:hover{color:#a5b4fc}
+@media(max-width:600px){.grid-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="badge">📣 Marketing Launch Kit</div>
+  <h1 style="font-size:clamp(30px,5vw,48px);font-weight:900;letter-spacing:-0.02em;margin-bottom:12px">Copy. Paste. <span class="gradient">Get Traffic.</span></h1>
+  <p style="color:#64748b;font-size:16px;max-width:500px;margin:0 auto">Every post, email, and message you need to launch PDFUniverse and get your first 1,000 users — all written for you.</p>
+</div>
+
+<!-- ── CHECKLIST ─────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#10b98120">✅</div>
+    <div><div class="section-title">Launch Day Checklist</div><div class="section-sub">Do these in order on your launch day</div></div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-week">Morning — 9 AM</div><div class="tl-title">Submit to Product Hunt</div><div class="tl-desc">Use the exact copy below. Submit before noon PST for best visibility. Ask 5 friends to upvote.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-week">Morning — 10 AM</div><div class="tl-title">Post on Reddit</div><div class="tl-desc">Post in r/SideProject AND r/entrepreneur using the templates below. Same post, slightly different.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-week">Morning — 11 AM</div><div class="tl-title">Tweet your launch thread</div><div class="tl-desc">Post the Twitter thread below. Pin it to your profile. Reply to every comment.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-week">Afternoon — 1 PM</div><div class="tl-title">Post on LinkedIn</div><div class="tl-desc">Professional audience who buys tools. Use the LinkedIn post below. Tag relevant people.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-week">Afternoon — 3 PM</div><div class="tl-title">Submit to directories</div><div class="tl-desc">AlternativeTo.net, SaaSWorthy.com, G2.com, Capterra.com — free listings = free SEO backlinks.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-week">Evening — 6 PM</div><div class="tl-title">Send email to your contacts</div><div class="tl-desc">Use the personal email template below. Send to 20–50 people who might find this useful.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-week">Night — 9 PM</div><div class="tl-title">Reply to every comment &amp; message</div><div class="tl-desc">Engagement signals matter. Thank everyone who comments, even just "Thanks for checking it out!"</div></div>
+  </div>
+</div>
+
+<!-- ── PRODUCT HUNT ──────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#f97316'20;background:#f9731620">🏆</div>
+    <div><div class="section-title">Product Hunt</div><div class="section-sub">Submit at producthunt.com → "Submit" button (top right)</div></div>
+  </div>
+
+  <div class="tip"><span class="tip-icon">💡</span><p><strong>How to submit:</strong> Go to <strong>producthunt.com</strong> → click "Submit" → fill in each field with the text below. Ask 5+ friends to upvote on launch day — the first 3 hours matter most.</p></div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Product Name</span><button class="copy-btn" onclick="copy(this,'PDFUniverse')">📋 Copy</button></div>
+    <div class="copy-text">PDFUniverse</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Tagline (60 chars max)</span><button class="copy-btn" onclick="copy(this,'Every PDF tool you need — free, fast, and AI-powered')">📋 Copy</button></div>
+    <div class="copy-text">Every PDF tool you need — free, fast, and AI-powered</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Description</span><button class="copy-btn" onclick="copyEl(this,'ph-desc')">📋 Copy</button></div>
+    <div class="copy-text" id="ph-desc">PDFUniverse is the most complete PDF platform on the web — 14+ tools, all free, with AI superpowers.
+
+🔗 Merge multiple PDFs into one
+✂️ Split PDFs into individual pages
+📦 Compress to reduce file size
+🔄 Rotate, watermark, add page numbers
+🖼️ Convert JPG ↔ PDF
+✍️ Sign documents electronically
+🤖 AI-powered summarization (Claude AI)
+
+What makes it different:
+• Works entirely in your browser — files never leave your device
+• No account required for basic tools
+• Dark/light mode, fully responsive
+• AI features powered by Claude for smart document analysis
+• Files auto-deleted after 1 hour for privacy
+
+Built for: freelancers, small businesses, students, legal professionals — anyone who works with PDFs daily.
+
+Free forever. Pro plan available for power users.</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">First Comment (post this right after submitting)</span><button class="copy-btn" onclick="copyEl(this,'ph-comment')">📋 Copy</button></div>
+    <div class="copy-text" id="ph-comment">Hey Product Hunt! 👋
+
+I built PDFUniverse because I was tired of juggling 5 different websites just to work with a single PDF.
+
+The pain points I wanted to solve:
+• Most PDF tools upload your files to their servers (privacy risk)
+• Paywalls after 1 use
+• Slow, clunky interfaces built in 2012
+• AI features that actually cost extra
+
+PDFUniverse runs PDF processing directly in your browser — your files never leave your computer. Free for 5 tasks/day, Pro for unlimited.
+
+Would love your feedback — what PDF workflow do YOU hate the most? I'll add it to the roadmap! 🙏</div>
+  </div>
+</div>
+
+<!-- ── REDDIT ────────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#ff450020">🟠</div>
+    <div><div class="section-title">Reddit Posts</div><div class="section-sub">r/SideProject · r/entrepreneur · r/webdev · r/productivity</div></div>
+  </div>
+
+  <div class="tip"><span class="tip-icon">⚠️</span><p><strong>Important:</strong> Don't post the same text in multiple subreddits on the same day — Reddit may shadowban you. Space posts 1–2 days apart and slightly customize each one. Always check each subreddit's rules first.</p></div>
+
+  <div style="margin-bottom:8px"><span class="platform-pill" style="background:#ff450020;color:#ff6b35;border:1px solid #ff450033">r/SideProject</span></div>
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">r/SideProject Post</span><button class="copy-btn" onclick="copyEl(this,'reddit-side')">📋 Copy</button></div>
+    <div class="copy-text" id="reddit-side">Title: I built a free PDF toolkit that runs in your browser — no uploads, no accounts, no BS
+
+After getting frustrated with PDF tools that either charge you after one use or upload your private documents to their servers, I spent [X weeks] building PDFUniverse.
+
+What it does:
+→ 14 PDF tools: merge, split, compress, rotate, watermark, sign, convert, and more
+→ Everything runs IN your browser — files never leave your device
+→ AI-powered summarization (using Claude AI)
+→ E-signature: draw or type your signature onto any PDF
+→ Dark mode, fully mobile-friendly
+→ Free forever (5 tasks/day), Pro plan for power users
+
+The part I'm most proud of: the "organize pages" tool lets you drag, remove, and reorder individual PDF pages with a visual preview.
+
+Would love any feedback, especially on what PDF tools you wish existed that don't yet!
+
+Link: [your-url.netlify.app]</div>
+  </div>
+
+  <div style="margin-bottom:8px;margin-top:20px"><span class="platform-pill" style="background:#ff450020;color:#ff6b35;border:1px solid #ff450033">r/entrepreneur</span></div>
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">r/entrepreneur Post</span><button class="copy-btn" onclick="copyEl(this,'reddit-ent')">📋 Copy</button></div>
+    <div class="copy-text" id="reddit-ent">Title: Launched a SaaS PDF tool — here's what I learned in the first week
+
+I just shipped PDFUniverse, a PDF platform with 14+ tools and an AI summarizer. Some honest reflections:
+
+What went better than expected:
+✅ Browser-based PDF processing (pdf-lib) is genuinely fast — users don't wait for uploads
+✅ People love the e-signature tool — didn't expect that to be so popular
+✅ Dark mode was non-negotiable for my target users (developers, designers)
+
+What was harder than I expected:
+❌ PDF text extraction for AI features — scanned PDFs are a nightmare
+❌ Getting the compress ratio right without destroying quality
+❌ Pricing psychology — $12/mo felt too high, $8 felt cheap. Landed on $10 annual.
+
+The numbers so far:
+• Day 1: [X] visitors, [Y] signups
+• Most used tool: Merge PDF (45% of all usage)
+• Biggest drop-off: After hitting the 5/day free limit
+
+Happy to answer questions about the tech stack, pricing strategy, or growth. What would you do differently?
+
+URL: [your-url]</div>
+  </div>
+
+  <div style="margin-bottom:8px;margin-top:20px"><span class="platform-pill" style="background:#ff450020;color:#ff6b35;border:1px solid #ff450033">r/productivity</span></div>
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">r/productivity Post</span><button class="copy-btn" onclick="copyEl(this,'reddit-prod')">📋 Copy</button></div>
+    <div class="copy-text" id="reddit-prod">Title: Stop paying for PDF software — this free browser tool does everything
+
+I got tired of paying $180/year for Acrobat when I only need basic PDF operations. Here's what I now use instead (and it's free):
+
+PDFUniverse — [your-url]
+
+What I use it for:
+• Merging 3–4 PDFs into one before sending to clients ← does it in 2 seconds
+• Compressing large scanned contracts ← shrinks 8MB → 1.2MB
+• Adding my signature to documents ← draw it once, reuse it
+• Page numbering before printing ← 1 click
+• AI summary of long reports ← get key points in 15 seconds
+
+The privacy angle: PDF files never leave your browser — processed 100% client-side. No account needed for basic use.
+
+Anyone else have good free PDF workflow tips? Always looking to optimize.</div>
+  </div>
+</div>
+
+<!-- ── TWITTER / X ────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#ffffff10">🐦</div>
+    <div><div class="section-title">Twitter / X Thread</div><div class="section-sub">Post as a thread (reply to your own tweet for each point)</div></div>
+  </div>
+
+  <div class="tip"><span class="tip-icon">💡</span><p><strong>Pro tip:</strong> Post this as a thread — one tweet at a time, replying to yourself. Threads get 3–4× more engagement than single tweets. Post between 8–10 AM or 6–8 PM for best reach.</p></div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Tweet 1 of 7 (Hook)</span><button class="copy-btn" onclick="copyEl(this,'tw1')">📋 Copy</button></div>
+    <div class="copy-text" id="tw1">I just launched PDFUniverse — a free PDF platform with 14+ tools and AI superpowers 🧵
+
+After months of building, it's finally live.
+
+Here's everything it does (and why I built it):</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Tweet 2 of 7</span><button class="copy-btn" onclick="copyEl(this,'tw2')">📋 Copy</button></div>
+    <div class="copy-text" id="tw2">The problem I was solving:
+
+❌ iLovePDF charges after 2 uses
+❌ Adobe Acrobat costs $180/year for basic stuff
+❌ Most tools upload your private files to their servers
+❌ Interfaces look like they were built in 2009
+
+There had to be a better way.</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Tweet 3 of 7</span><button class="copy-btn" onclick="copyEl(this,'tw3')">📋 Copy</button></div>
+    <div class="copy-text" id="tw3">PDFUniverse solves all of this:
+
+✅ 14 PDF tools — all free to start
+✅ Runs in your browser (files never leave your device)
+✅ E-signature: draw or type your signature
+✅ AI summarizer: get key points from any PDF in 15 seconds
+✅ Dark mode + fully mobile-friendly
+✅ No signup required for basic tools</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Tweet 4 of 7</span><button class="copy-btn" onclick="copyEl(this,'tw4')">📋 Copy</button></div>
+    <div class="copy-text" id="tw4">My favorite feature: the AI Summarizer 🤖
+
+Upload any PDF → Claude AI reads it → gives you:
+• 3-sentence executive summary
+• Key bullet points  
+• Answers to your specific questions
+
+Perfect for long contracts, research papers, reports, or legal documents you don't have time to read fully.</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Tweet 5 of 7</span><button class="copy-btn" onclick="copyEl(this,'tw5')">📋 Copy</button></div>
+    <div class="copy-text" id="tw5">The technical stuff for devs 👇
+
+Built with:
+• pdf-lib for browser-based PDF manipulation
+• Claude AI (Anthropic) for AI features
+• Tailwind CSS + vanilla JS (no framework = fast)
+• Netlify hosting (deploys in seconds)
+
+Zero backend for basic tools — everything runs client-side for privacy.</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Tweet 6 of 7</span><button class="copy-btn" onclick="copyEl(this,'tw6')">📋 Copy</button></div>
+    <div class="copy-text" id="tw6">Pricing (honest breakdown):
+
+Free: 5 tasks/day, 50MB limit, all basic tools
+Pro ($12/mo): Unlimited, 2GB, AI tools, batch processing
+Team ($29/mo): 10 seats, SSO, admin panel
+
+The free plan is genuinely useful — not crippled. 
+
+Goal: Make paid feel like a superpower, not a necessity.</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Tweet 7 of 7 (CTA)</span><button class="copy-btn" onclick="copyEl(this,'tw7')">📋 Copy</button></div>
+    <div class="copy-text" id="tw7">Try it free → [your-url]
+
+If you find it useful:
+❤️ Like this thread
+🔁 Retweet (helps massively)
+🗣️ Tell me what PDF tool you wish existed
+
+Building in public — follow for updates on growth, features, and the honest journey of building a SaaS 🚀</div>
+  </div>
+</div>
+
+<!-- ── LINKEDIN ───────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#0077b520">💼</div>
+    <div><div class="section-title">LinkedIn Post</div><div class="section-sub">Professional audience — high intent buyers</div></div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">LinkedIn Post (long-form performs best here)</span><button class="copy-btn" onclick="copyEl(this,'linkedin')">📋 Copy</button></div>
+    <div class="copy-text" id="linkedin">After working with PDFs every day for years, I got frustrated.
+
+Every tool either:
+→ Charged me after 2 uses
+→ Made me sign up just to merge 2 files
+→ Uploaded my confidential documents to some random server
+
+So I built something better.
+
+Introducing PDFUniverse — a professional PDF platform with 14+ tools, AI-powered features, and zero compromises on privacy.
+
+What makes it different:
+
+🔒 PRIVACY FIRST
+All PDF processing happens in your browser. Your files never touch our servers. Period.
+
+🤖 AI-POWERED
+Upload any PDF and get an instant AI summary, key bullet points, or answers to specific questions — powered by Claude AI.
+
+✍️ E-SIGNATURES
+Draw or type your signature and apply it to any PDF. Save signatures for reuse. No DocuSign subscription needed for basic signing.
+
+⚡ BUILT FOR SPEED
+No waiting for uploads. No queues. Processing starts instantly.
+
+FREE FOREVER
+5 tasks/day, no account needed. Pro plan for unlimited access.
+
+Whether you're a legal professional reviewing contracts, a student summarizing research papers, or an accountant merging financial statements — PDFUniverse has your workflow covered.
+
+Try it today: [your-url]
+
+I'd love your feedback — what's your biggest PDF frustration at work?
+
+#productivity #SaaS #tools #PDF #AItools #buildinpublic</div>
+  </div>
+</div>
+
+<!-- ── EMAIL OUTREACH ─────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#6366f120">📧</div>
+    <div><div class="section-title">Email Outreach</div><div class="section-sub">Send these to your personal contacts — warm outreach converts best</div></div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Personal Email (to friends/family — informal)</span><button class="copy-btn" onclick="copyEl(this,'email-personal')">📋 Copy</button></div>
+    <div class="copy-text" id="email-personal">Subject: I built something — would love your honest opinion
+
+Hey [Name],
+
+Hope you're doing well!
+
+I've been working on a side project for a while and just launched it — would mean a lot to get your feedback.
+
+It's called PDFUniverse — a free website that lets you merge, compress, convert, and do AI analysis on PDF files. Everything works in your browser (files stay on your computer — nothing is uploaded to servers).
+
+The live link: [your-url]
+
+Would you mind:
+1. Clicking the link and taking a look (2 minutes)
+2. Trying one of the tools if you have a PDF handy
+3. Replying with what you think — what's good, what's confusing, what's missing
+
+Totally honest feedback welcome. Even "this is not useful to me" is helpful!
+
+Thanks for always being supportive 🙏
+
+[Your name]</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Cold Email (to potential business customers)</span><button class="copy-btn" onclick="copyEl(this,'email-cold')">📋 Copy</button></div>
+    <div class="copy-text" id="email-cold">Subject: Free PDF tool that might save your team time
+
+Hi [Name],
+
+Quick question — does your team work with PDFs regularly?
+
+I ask because I just launched PDFUniverse ([your-url]), a free platform that handles the most common PDF tasks: merging, compressing, signing, converting, and AI-powered summarization.
+
+The part I thought might be relevant to [their company]: the AI summarizer lets you upload any PDF and get an executive summary + key bullet points in about 10 seconds. Useful for long contracts, reports, or research papers.
+
+It's free to use — no signup needed for basic tools. Happy to offer a free Pro trial if you want to explore the advanced features.
+
+Worth 2 minutes to check out?
+
+Best,
+[Your name]
+
+P.S. Files are processed locally in your browser — nothing is uploaded to our servers, which I know matters for sensitive business documents.</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Follow-up Email (send 4 days after first email if no reply)</span><button class="copy-btn" onclick="copyEl(this,'email-followup')">📋 Copy</button></div>
+    <div class="copy-text" id="email-followup">Subject: Re: Free PDF tool that might save your team time
+
+Hi [Name],
+
+Just following up on my previous email — I know inboxes get busy!
+
+Since I wrote, I've added [new feature, e.g., "batch processing for multiple files at once"].
+
+If PDFs aren't part of your current workflow, completely understand — just say the word and I won't follow up again.
+
+If you do work with them regularly, I'd love to show you how PDFUniverse can help: [your-url]
+
+Either way, thanks for reading!
+
+[Your name]</div>
+  </div>
+</div>
+
+<!-- ── DIRECTORIES ────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#06b6d420">📁</div>
+    <div><div class="section-title">Directories &amp; Listings</div><div class="section-sub">Submit to these for free backlinks + organic traffic</div></div>
+  </div>
+
+  <div class="tip"><span class="tip-icon">💡</span><p><strong>Why this matters:</strong> Each listing gives you a backlink, which improves your Google ranking. Most are free and take 5–10 minutes each. Do 2–3 per day this week.</p></div>
+
+  <div style="background:#0f1322;border:1px solid #ffffff0d;border-radius:14px;overflow:hidden">
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead><tr style="border-bottom:1px solid #ffffff08"><th style="padding:12px 16px;text-align:left;color:#64748b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em">Directory</th><th style="padding:12px 16px;text-align:left;color:#64748b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em">What It Is</th><th style="padding:12px 16px;text-align:left;color:#64748b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em">Cost</th><th style="padding:12px 16px;text-align:left;color:#64748b;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em">Link</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #ffffff06"><td style="padding:12px 16px;color:#f1f5f9;font-weight:600">Product Hunt</td><td style="padding:12px 16px;color:#94a3b8">Best launch platform</td><td style="padding:12px 16px;color:#10b981">Free</td><td style="padding:12px 16px"><a href="https://producthunt.com/posts/new" target="_blank">Submit →</a></td></tr>
+        <tr style="border-bottom:1px solid #ffffff06"><td style="padding:12px 16px;color:#f1f5f9;font-weight:600">AlternativeTo</td><td style="padding:12px 16px;color:#94a3b8">Alt to Adobe Acrobat</td><td style="padding:12px 16px;color:#10b981">Free</td><td style="padding:12px 16px"><a href="https://alternativeto.net/software/add" target="_blank">Submit →</a></td></tr>
+        <tr style="border-bottom:1px solid #ffffff06"><td style="padding:12px 16px;color:#f1f5f9;font-weight:600">SaaSHub</td><td style="padding:12px 16px;color:#94a3b8">SaaS discovery</td><td style="padding:12px 16px;color:#10b981">Free</td><td style="padding:12px 16px"><a href="https://www.saashub.com/submit" target="_blank">Submit →</a></td></tr>
+        <tr style="border-bottom:1px solid #ffffff06"><td style="padding:12px 16px;color:#f1f5f9;font-weight:600">G2.com</td><td style="padding:12px 16px;color:#94a3b8">Business software reviews</td><td style="padding:12px 16px;color:#10b981">Free</td><td style="padding:12px 16px"><a href="https://sell.g2.com/free-listing" target="_blank">Submit →</a></td></tr>
+        <tr style="border-bottom:1px solid #ffffff06"><td style="padding:12px 16px;color:#f1f5f9;font-weight:600">There's An AI For That</td><td style="padding:12px 16px;color:#94a3b8">AI tool directory</td><td style="padding:12px 16px;color:#10b981">Free</td><td style="padding:12px 16px"><a href="https://theresanaiforthat.com/submit" target="_blank">Submit →</a></td></tr>
+        <tr style="border-bottom:1px solid #ffffff06"><td style="padding:12px 16px;color:#f1f5f9;font-weight:600">Futurepedia</td><td style="padding:12px 16px;color:#94a3b8">AI tools directory</td><td style="padding:12px 16px;color:#10b981">Free</td><td style="padding:12px 16px"><a href="https://www.futurepedia.io/submit-tool" target="_blank">Submit →</a></td></tr>
+        <tr style="border-bottom:1px solid #ffffff06"><td style="padding:12px 16px;color:#f1f5f9;font-weight:600">Hacker News</td><td style="padding:12px 16px;color:#94a3b8">"Show HN" post</td><td style="padding:12px 16px;color:#10b981">Free</td><td style="padding:12px 16px"><a href="https://news.ycombinator.com/submit" target="_blank">Submit →</a></td></tr>
+        <tr><td style="padding:12px 16px;color:#f1f5f9;font-weight:600">AppSumo</td><td style="padding:12px 16px;color:#94a3b8">Lifetime deal platform</td><td style="padding:12px 16px;color:#64748b">% of sales</td><td style="padding:12px 16px"><a href="https://appsumo.com/partners" target="_blank">Apply →</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="copy-block" style="margin-top:14px">
+    <div class="copy-header"><span class="copy-label">Short Description (use for all directory submissions)</span><button class="copy-btn" onclick="copyEl(this,'dir-desc')">📋 Copy</button></div>
+    <div class="copy-text" id="dir-desc">PDFUniverse is a free, browser-based PDF platform with 14+ tools including merge, split, compress, rotate, watermark, e-signature, and AI-powered summarization. Files are processed locally — nothing is uploaded to servers. Free plan available. No signup required.</div>
+  </div>
+</div>
+
+<!-- ── HACKER NEWS ────────────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#ff6d0020">🦊</div>
+    <div><div class="section-title">Hacker News — Show HN</div><div class="section-sub">High-quality developer audience. Be technical and honest.</div></div>
+  </div>
+  <div class="tip"><span class="tip-icon">⚠️</span><p><strong>HN Culture:</strong> Be humble, technical, and ready for tough questions. Don't be salesy. Respond to every comment within the first hour — HN rewards engagement.</p></div>
+  <div class="copy-block">
+    <div class="copy-header"><span class="copy-label">Show HN Post</span><button class="copy-btn" onclick="copyEl(this,'hn-post')">📋 Copy</button></div>
+    <div class="copy-text" id="hn-post">Title: Show HN: PDFUniverse – Browser-based PDF toolkit with AI summarization
+
+URL: [your-url]
+
+Comment to add:
+I built PDFUniverse because I was frustrated with existing PDF tools that require server uploads for basic operations.
+
+Technical approach:
+- PDF manipulation uses pdf-lib (runs entirely in browser via WebAssembly)
+- AI features use Anthropic's Claude API (user provides their own key, stored in localStorage)
+- PDF rendering/export uses PDF.js
+- No framework — vanilla JS + Tailwind CDN for minimal bundle size
+- Netlify hosting for the static frontend
+
+The privacy model: for all non-AI tools, zero bytes of your document leave your browser. The AI summarizer sends document text to Anthropic's API (only if the user has configured their own API key).
+
+Current limitations I'm working on:
+- Text extraction from scanned PDFs requires OCR (currently server-side only)
+- Word/Excel conversion needs LibreOffice server-side
+- Large files (>200MB) are slow in browser
+
+Happy to discuss technical decisions, tradeoffs, or the architecture. What would you build differently?</div>
+  </div>
+</div>
+
+<!-- ── 30-DAY GROWTH PLAN ─────────────────────────────────────── -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#10b98120">📈</div>
+    <div><div class="section-title">30-Day Growth Plan</div><div class="section-sub">Exactly what to do each week after launch</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="stat-card"><div class="stat-val" style="color:#6366f1">Week 1</div><div class="stat-label" style="color:#94a3b8;font-size:12px;margin-top:8px;text-align:left;line-height:1.7">• Launch on Product Hunt<br>• Post on Reddit (3 subreddits)<br>• Submit to 10 directories<br>• Email 30 personal contacts<br>• Post Twitter thread</div></div>
+    <div class="stat-card"><div class="stat-val" style="color:#8b5cf6">Week 2</div><div class="stat-label" style="color:#94a3b8;font-size:12px;margin-top:8px;text-align:left;line-height:1.7">• Write first SEO blog post<br>• Create YouTube demo video<br>• Post on LinkedIn daily<br>• Reply to every user comment<br>• Add 2 new tool features</div></div>
+    <div class="stat-card"><div class="stat-val" style="color:#06b6d4">Week 3</div><div class="stat-label" style="color:#94a3b8;font-size:12px;margin-top:8px;text-align:left;line-height:1.7">• Cold email 50 businesses<br>• Post in Facebook groups<br>• Submit Show HN<br>• Write 2nd blog post<br>• A/B test pricing page</div></div>
+    <div class="stat-card"><div class="stat-val" style="color:#10b981">Week 4</div><div class="stat-label" style="color:#94a3b8;font-size:12px;margin-top:8px;text-align:left;line-height:1.7">• Analyze which source converts<br>• Double down on what works<br>• Reach out to micro-influencers<br>• Add affiliate program<br>• Write monthly recap post</div></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function copy(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function copyEl(btn, id) {
+  const text = document.getElementById(id)?.textContent?.trim() || '';
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PDFUniverse — Stripe Payment Setup (10 Minutes)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0b0f1a;color:#f1f5f9;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;line-height:1.2}
+.wrap{max-width:780px;margin:0 auto;padding:40px 24px 90px}
+.hero{text-align:center;padding:48px 0 52px}
+.badge{display:inline-block;background:#10b98120;color:#34d399;border:1px solid #10b98133;border-radius:99px;padding:5px 16px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+.title{font-size:clamp(28px,6vw,46px);font-weight:900;letter-spacing:-.03em;margin-bottom:12px}
+.g{background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{color:#64748b;font-size:16px;line-height:1.65;max-width:500px;margin:0 auto}
+.time-pill{display:inline-flex;align-items:center;gap:8px;background:#10b98118;border:1px solid #10b98133;border-radius:99px;padding:8px 20px;font-size:13px;font-weight:700;color:#34d399;margin-top:20px}
+
+/* Steps */
+.step{display:flex;gap:20px;padding:28px;background:#161b2e;border:1px solid #ffffff0d;border-radius:20px;margin-bottom:20px;position:relative;overflow:hidden;transition:border-color .2s}
+.step:hover{border-color:#6366f133}
+.step-num{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:20px;font-weight:900;color:#fff;flex-shrink:0;box-shadow:0 4px 16px #6366f133}
+.step-body{flex:1;min-width:0}
+.step-title{font-size:18px;font-weight:800;color:#f1f5f9;margin-bottom:6px}
+.step-desc{color:#94a3b8;font-size:14px;line-height:1.7;margin-bottom:14px}
+.step ol,.step ul{padding-left:18px;margin-bottom:14px}
+.step li{font-size:13.5px;color:#94a3b8;margin-bottom:8px;line-height:1.65}
+.step li strong{color:#e2e8f0}
+.btn-link{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 16px #6366f133}
+.btn-link:hover{box-shadow:0 8px 28px #6366f155;transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;background:#ffffff08;color:#94a3b8;border:1px solid #ffffff12;border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-ghost:hover{border-color:#ffffff22;color:#f1f5f9}
+.code-wrap{background:#0f1322;border:1px solid #ffffff0d;border-radius:12px;overflow:hidden;margin:14px 0}
+.code-head{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #ffffff08;background:#ffffff03}
+.code-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#374151}
+.copy-btn{display:flex;align-items:center;gap:5px;padding:4px 11px;background:#6366f118;border:1px solid #6366f128;border-radius:7px;color:#818cf8;font-size:10px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s}
+.copy-btn:hover{background:#6366f130}
+.copy-btn.ok{background:#10b98120;border-color:#10b98133;color:#34d399}
+pre{padding:14px 16px;font-size:12.5px;color:#a5b4fc;line-height:1.65;overflow-x:auto;white-space:pre;font-family:'Courier New',monospace}
+.tip{display:flex;gap:10px;padding:12px 16px;background:#f59e0b0d;border:1px solid #f59e0b22;border-radius:10px;margin:12px 0;font-size:13px;color:#fbbf24;line-height:1.6}
+.tip strong{color:#fde68a}
+.success{background:#10b98110;border-color:#10b98133;color:#34d399}
+.success strong{color:#6ee7b7}
+.warning{background:#ef444410;border-color:#ef444430;color:#f87171}
+.warning strong{color:#fca5a5}
+
+/* Price preview */
+.price-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:16px 0}
+.price-card{background:#0f1322;border:1px solid #ffffff0d;border-radius:14px;padding:18px}
+.pc-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#64748b;margin-bottom:8px}
+.pc-price{font-size:28px;font-weight:900;font-family:'Sora',sans-serif;letter-spacing:-.02em;color:#f1f5f9;margin-bottom:4px}
+.pc-period{font-size:12px;color:#64748b;margin-bottom:12px}
+.pc-id{font-family:'Courier New',monospace;font-size:11px;color:#818cf8;background:#6366f118;padding:4px 10px;border-radius:6px;word-break:break-all}
+
+/* Input section */
+.link-input-section{background:#0f1322;border:1px solid #6366f133;border-radius:18px;padding:28px;margin:24px 0}
+.link-input-section h3{font-size:17px;font-weight:800;color:#f1f5f9;margin-bottom:6px}
+.link-input-section p{color:#64748b;font-size:13.5px;margin-bottom:18px;line-height:1.6}
+.link-row{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.link-label{font-size:12px;font-weight:700;color:#94a3b8;margin-bottom:6px;display:block}
+.link-input{flex:1;min-width:200px;padding:11px 14px;background:#161b2e;border:1px solid #ffffff12;border-radius:10px;color:#f1f5f9;font-size:13px;font-family:inherit;outline:none;transition:border-color .15s}
+.link-input:focus{border-color:#6366f1}
+.link-input::placeholder{color:#374151}
+.gen-btn{padding:11px 20px;background:linear-gradient(135deg,#10b981,#06b6d4);border:none;border-radius:10px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all .2s}
+.gen-btn:hover{opacity:.9;transform:translateY(-1px)}
+
+/* Checklist */
+.final-checklist{background:#0f1322;border:1px solid #ffffff0d;border-radius:18px;padding:26px;margin-top:32px}
+.fc-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #ffffff06;font-size:13.5px;color:#94a3b8;line-height:1.6;cursor:pointer}
+.fc-item:last-child{border:none}
+.fc-item input[type=checkbox]{accent-color:#6366f1;margin-top:3px;width:16px;height:16px;flex-shrink:0}
+.fc-item.checked{color:#374151;text-decoration:line-through}
+
+footer{border-top:1px solid #ffffff06;background:#07090f;padding:24px;text-align:center;font-size:12px;color:#374151;margin-top:48px}
+footer a{color:#6366f1;text-decoration:none}
+@media(max-width:600px){.step{flex-direction:column;gap:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="badge">💳 Payment Setup</div>
+  <h1 class="title">Get Paid in <span class="g">10 Minutes</span></h1>
+  <p class="subtitle">Set up Stripe payments for PDFUniverse — no coding needed. By the end of this guide, your Pro plan will accept real credit card payments.</p>
+  <div class="time-pill">⏱ Takes exactly 10 minutes · Free to start</div>
+</div>
+
+<!-- STEP 1 -->
+<div class="step">
+  <div class="step-num">1</div>
+  <div class="step-body">
+    <div class="step-title">Create a free Stripe account</div>
+    <div class="step-desc">Stripe is the most trusted payment processor in the world. Used by Amazon, Shopify, and millions of businesses. Zero monthly fees — they take 2.9% + $0.30 per successful charge only.</div>
+    <ol>
+      <li>Go to <strong>stripe.com</strong> and click <strong>"Start now"</strong></li>
+      <li>Enter your email, create a password, and verify your email</li>
+      <li>Fill in your business details (use your real name/address — this is for tax purposes)</li>
+      <li>Add your <strong>bank account</strong> so payments can be deposited to you</li>
+      <li>You'll land on the Stripe Dashboard — keep this open</li>
+    </ol>
+    <a href="https://dashboard.stripe.com/register" target="_blank" class="btn-link">Open Stripe Signup →</a>
+    <div class="tip" style="margin-top:14px"><span>💡</span><div><strong>Test mode vs Live mode:</strong> Stripe starts you in "Test Mode." You can test payments with fake cards before going live. Toggle to "Live Mode" in the top-left when you're ready to accept real money.</div></div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <div class="step-num">2</div>
+  <div class="step-body">
+    <div class="step-title">Create your products and prices</div>
+    <div class="step-desc">Tell Stripe what you're selling and how much. You need to create 4 products: Pro Monthly, Pro Annual, Team Monthly, Team Annual.</div>
+    <ol>
+      <li>In Stripe Dashboard, click <strong>Products</strong> in the left sidebar</li>
+      <li>Click <strong>"Add product"</strong> (top right button)</li>
+      <li>Create the 4 products below — one at a time:</li>
+    </ol>
+    <div class="price-cards">
+      <div class="price-card">
+        <div class="pc-name">Pro Monthly</div>
+        <div class="pc-price">$12</div>
+        <div class="pc-period">per month</div>
+        <div style="font-size:11px;color:#64748b;line-height:1.6">Name: "PDFUniverse Pro"<br>Billing: Recurring monthly<br>Price: $12.00 USD</div>
+      </div>
+      <div class="price-card">
+        <div class="pc-name">Pro Annual</div>
+        <div class="pc-price">$115</div>
+        <div class="pc-period">per year</div>
+        <div style="font-size:11px;color:#64748b;line-height:1.6">Name: "PDFUniverse Pro Annual"<br>Billing: Recurring yearly<br>Price: $115.00 USD</div>
+      </div>
+      <div class="price-card">
+        <div class="pc-name">Team Monthly</div>
+        <div class="pc-price">$29</div>
+        <div class="pc-period">per month</div>
+        <div style="font-size:11px;color:#64748b;line-height:1.6">Name: "PDFUniverse Team"<br>Billing: Recurring monthly<br>Price: $29.00 USD</div>
+      </div>
+      <div class="price-card">
+        <div class="pc-name">Team Annual</div>
+        <div class="pc-price">$275</div>
+        <div class="pc-period">per year</div>
+        <div style="font-size:11px;color:#64748b;line-height:1.6">Name: "PDFUniverse Team Annual"<br>Billing: Recurring yearly<br>Price: $275.00 USD</div>
+      </div>
+    </div>
+    <div class="tip"><span>💡</span><div><strong>How to create each:</strong> Click "Add product" → enter name → under Pricing, select "Recurring" → enter price → select billing period (Monthly or Yearly) → click Save. Repeat for all 4.</div></div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <div class="step-num">3</div>
+  <div class="step-body">
+    <div class="step-title">Create Payment Links (no coding!)</div>
+    <div class="step-desc">Stripe Payment Links are magic — a URL you share that opens a secure payment page. No website integration needed. Click the link → user pays → you get the money.</div>
+    <ol>
+      <li>In Stripe Dashboard → click <strong>"Payment Links"</strong> in the sidebar</li>
+      <li>Click <strong>"New payment link"</strong></li>
+      <li>Select your product (e.g., "PDFUniverse Pro") → click Continue</li>
+      <li>Customize the page (add your logo if you have one)</li>
+      <li>Under <strong>"After payment"</strong> → set Redirect URL to your site: <code style="background:#ffffff08;padding:2px 8px;border-radius:5px;font-size:12px">https://your-site.netlify.app/</code></li>
+      <li>Click <strong>"Create link"</strong></li>
+      <li>Copy the link — it looks like: <code style="background:#ffffff08;padding:2px 8px;border-radius:5px;font-size:12px">https://buy.stripe.com/xxxxxxxxxxxxx</code></li>
+      <li>Repeat for all 4 products</li>
+    </ol>
+    <div class="tip success"><span>✓</span><div><strong>Your payment links are now live!</strong> Anyone who clicks them can pay with a credit card. Stripe handles everything — security, receipts, subscriptions, cancellations.</div></div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <div class="step-num">4</div>
+  <div class="step-body">
+    <div class="step-title">Add your payment links to pro-upgrade.html</div>
+    <div class="step-desc">Now paste your Stripe links into the upgrade page. Use the tool below to generate the exact code to paste.</div>
+
+    <div class="link-input-section">
+      <h3>🔧 Link Generator</h3>
+      <p>Paste your Stripe payment links below — the correct code for pro-upgrade.html is generated automatically.</p>
+
+      <div>
+        <span class="link-label">Pro Monthly payment link</span>
+        <div class="link-row">
+          <input class="link-input" id="li-pro-m" placeholder="https://buy.stripe.com/..." oninput="genCode()"/>
+        </div>
+      </div>
+      <div>
+        <span class="link-label">Pro Annual payment link</span>
+        <div class="link-row">
+          <input class="link-input" id="li-pro-a" placeholder="https://buy.stripe.com/..." oninput="genCode()"/>
+        </div>
+      </div>
+      <div>
+        <span class="link-label">Team Monthly payment link</span>
+        <div class="link-row">
+          <input class="link-input" id="li-team-m" placeholder="https://buy.stripe.com/..." oninput="genCode()"/>
+        </div>
+      </div>
+      <div>
+        <span class="link-label">Team Annual payment link (optional)</span>
+        <div class="link-row">
+          <input class="link-input" id="li-team-a" placeholder="https://buy.stripe.com/..." oninput="genCode()"/>
+        </div>
+      </div>
+
+      <div class="code-wrap" style="margin-top:16px">
+        <div class="code-head">
+          <span class="code-lbl">Generated Code — Find &amp; replace in pro-upgrade.html</span>
+          <button class="copy-btn" onclick="copyGenCode(this)" id="genCopyBtn">📋 Copy</button>
+        </div>
+        <pre id="genOutput" style="color:#64748b;font-style:italic">// Paste your Stripe links above to generate code...</pre>
+      </div>
+    </div>
+
+    <div class="tip"><span>💡</span><div><strong>To add the links to pro-upgrade.html:</strong><br>1. Open pro-upgrade.html in Notepad<br>2. Press Ctrl+H (Find &amp; Replace)<br>3. Find: <code>YOUR_PRO_PAYMENT_LINK</code><br>4. Replace with your real link<br>5. Repeat for <code>YOUR_TEAM_PAYMENT_LINK</code><br>6. Save and re-upload to Netlify</div></div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <div class="step-num">5</div>
+  <div class="step-body">
+    <div class="step-title">Test your first payment</div>
+    <div class="step-desc">Before going live, test the entire payment flow with Stripe's test card numbers. No real money is charged during testing.</div>
+    <ol>
+      <li>Make sure Stripe is in <strong>Test Mode</strong> (toggle in top-left of dashboard)</li>
+      <li>Click your payment link → it opens the Stripe checkout page</li>
+      <li>Use test card number: <strong style="color:#818cf8;font-family:monospace">4242 4242 4242 4242</strong></li>
+      <li>Use any future expiry date (e.g., 12/34) and any 3-digit CVC (e.g., 123)</li>
+      <li>Complete the payment — you should see a success page</li>
+      <li>Check Stripe Dashboard → Payments — the test payment should appear</li>
+      <li>When happy, switch Stripe to <strong>Live Mode</strong> and create new live payment links</li>
+    </ol>
+
+    <div class="code-wrap">
+      <div class="code-head">
+        <span class="code-lbl">Stripe Test Cards</span>
+        <button class="copy-btn" onclick="copyCode(this,'testCards')">📋 Copy</button>
+      </div>
+      <pre id="testCards">Successful payment:  4242 4242 4242 4242
+Payment declined:    4000 0000 0000 0002
+3D Secure (auth):    4000 0025 0000 3155
+Insufficient funds:  4000 0000 0000 9995
+
+All test cards: Use any future expiry + any 3-digit CVC</pre>
+    </div>
+    <div class="tip success"><span>✅</span><div><strong>That's it!</strong> Once you've tested successfully, switch to Live Mode, regenerate your payment links, update pro-upgrade.html, and re-deploy. You're now accepting real payments.</div></div>
+  </div>
+</div>
+
+<!-- STEP 6: WEBHOOKS (OPTIONAL BUT RECOMMENDED) -->
+<div class="step">
+  <div class="step-num" style="background:linear-gradient(135deg,#f59e0b,#f97316)">+</div>
+  <div class="step-body">
+    <div class="step-title">Bonus: Know exactly who paid (Zapier method)</div>
+    <div class="step-desc">When someone pays, you want to know immediately and send them a welcome email. Without a backend, use Zapier to connect Stripe to your email service — completely free, no coding.</div>
+    <ol>
+      <li>Go to <strong>zapier.com</strong> → sign up free</li>
+      <li>Click <strong>"Create Zap"</strong></li>
+      <li><strong>Trigger:</strong> Search "Stripe" → select "New Payment" → connect your Stripe account</li>
+      <li><strong>Action:</strong> Search "Gmail" (or Mailchimp) → select "Send Email"</li>
+      <li>Set up the email: To = customer email, Subject = "Payment confirmed!", Body = your welcome message</li>
+      <li>Test it → turn it on</li>
+    </ol>
+    <div class="tip"><span>⚡</span><div>Zapier's free tier allows 100 automated actions/month — enough for 100 new paying customers. When you exceed that, upgrade to Zapier Starter ($20/mo) or set up proper email automation with Resend.</div></div>
+  </div>
+</div>
+
+<!-- Final checklist -->
+<div class="final-checklist">
+  <h3 style="font-size:17px;font-weight:800;color:#f1f5f9;margin-bottom:16px">✅ Stripe Setup Checklist</h3>
+  <div id="checks"></div>
+</div>
+
+</div>
+
+<footer>
+  <p>© 2025 PDFUniverse · <a href="/">Home</a> · <a href="/90-day-plan.html">Growth Plan</a> · <a href="/START-HERE.html">All Files</a></p>
+</footer>
+
+<script>
+const CHECKS = [
+  'Created Stripe account at stripe.com',
+  'Added bank account for payouts',
+  'Created "PDFUniverse Pro" product ($12/month)',
+  'Created "PDFUniverse Pro Annual" product ($115/year)',
+  'Created "PDFUniverse Team" product ($29/month)',
+  'Generated Payment Link for Pro Monthly',
+  'Generated Payment Link for Pro Annual',
+  'Generated Payment Link for Team',
+  'Tested payment with card 4242 4242 4242 4242',
+  'Updated pro-upgrade.html with real Stripe links',
+  'Re-deployed pro-upgrade.html to Netlify',
+  'Switched Stripe to Live Mode',
+  'Regenerated Payment Links in Live Mode',
+  'Set up Zapier → send email on new payment',
+  'Made your first real $1 (test with small amount!)',
+];
+
+function buildChecks() {
+  const saved = JSON.parse(localStorage.getItem('stripe_checks') || '{}');
+  const el = document.getElementById('checks');
+  el.innerHTML = CHECKS.map((c, i) => `
+    <div class="fc-item${saved[i] ? ' checked' : ''}" onclick="toggleCheck(${i}, this)">
+      <input type="checkbox" ${saved[i] ? 'checked' : ''} onclick="event.stopPropagation()"/>
+      ${c}
+    </div>`).join('');
+}
+
+function toggleCheck(i, row) {
+  const saved = JSON.parse(localStorage.getItem('stripe_checks') || '{}');
+  saved[i] = !saved[i];
+  localStorage.setItem('stripe_checks', JSON.stringify(saved));
+  row.classList.toggle('checked', saved[i]);
+  row.querySelector('input').checked = saved[i];
+}
+
+function genCode() {
+  const pm = document.getElementById('li-pro-m').value.trim();
+  const pa = document.getElementById('li-pro-a').value.trim();
+  const tm = document.getElementById('li-team-m').value.trim();
+  const ta = document.getElementById('li-team-a').value.trim();
+
+  if (!pm && !pa && !tm) {
+    document.getElementById('genOutput').style.color = '#64748b';
+    document.getElementById('genOutput').textContent = '// Paste your Stripe links above to generate code...';
+    return;
+  }
+
+  const code = `// In pro-upgrade.html, find the handleProClick() function
+// and replace the stripeProLink variable:
+
+function handleProClick() {
+  const stripeProLink = isAnnual
+    ? '${pa || 'YOUR_PRO_ANNUAL_LINK'}'
+    : '${pm || 'YOUR_PRO_MONTHLY_LINK'}';
+  window.open(stripeProLink, '_blank');
+}
+
+function handleTeamClick() {
+  const stripeTeamLink = isAnnual
+    ? '${ta || 'YOUR_TEAM_ANNUAL_LINK'}'
+    : '${tm || 'YOUR_TEAM_MONTHLY_LINK'}';
+  window.open(stripeTeamLink, '_blank');
+}`;
+
+  document.getElementById('genOutput').style.color = '#a5b4fc';
+  document.getElementById('genOutput').textContent = code;
+}
+
+function copyCode(btn, id) {
+  const text = document.getElementById(id)?.textContent || '';
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied!'; btn.classList.add('ok');
+    setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('ok'); }, 2000);
+  });
+}
+
+function copyGenCode(btn) {
+  const text = document.getElementById('genOutput')?.textContent || '';
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copied!'; btn.classList.add('ok');
+    setTimeout(() => { btn.textContent = '📋 Copy'; btn.classList.remove('ok'); }, 2000);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', buildChecks);
+</script>
+</body>
+</html>

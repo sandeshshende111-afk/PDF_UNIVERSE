@@ -1,0 +1,173 @@
+# ═══════════════════════════════════════════════════════════
+# PDFUniverse — docker-compose.yml
+# Full local development stack:
+#   • MongoDB
+#   • Redis (job queue)
+#   • Backend API (Express)
+#   • Frontend (Next.js)
+# ═══════════════════════════════════════════════════════════
+
+version: "3.9"
+
+services:
+
+  # ── MongoDB ──────────────────────────────────────────────
+  mongo:
+    image: mongo:7.0
+    container_name: pdfuniverse_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: pdfuniverse
+      MONGO_INITDB_ROOT_PASSWORD: pdfuniverse_secret
+      MONGO_INITDB_DATABASE: pdfuniverse
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis (optional — for Bull job queues) ────────────────
+  redis:
+    image: redis:7.2-alpine
+    container_name: pdfuniverse_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Backend API ───────────────────────────────────────────
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pdfuniverse_api
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    depends_on:
+      mongo: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      MONGODB_URI: mongodb://pdfuniverse:pdfuniverse_secret@mongo:27017/pdfuniverse?authSource=admin
+      REDIS_URL: redis://redis:6379
+      FRONTEND_URL: http://localhost:3000
+      API_URL: http://localhost:5000
+      # Secrets — override via .env or docker secret
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET}
+    volumes:
+      - ./backend:/app
+      - /app/node_modules      # anonymous volume — keeps container's node_modules
+      - uploads_data:/app/uploads
+      - outputs_data:/app/outputs
+
+  # ── Frontend (Next.js) ────────────────────────────────────
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: pdfuniverse_web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:5000/api
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+
+volumes:
+  mongo_data:
+  redis_data:
+  uploads_data:
+  outputs_data:
+
+---
+
+# ═══════════════════════════════════════════════════════════
+# backend/Dockerfile
+# ═══════════════════════════════════════════════════════════
+# FROM node:20-alpine
+# WORKDIR /app
+# COPY package*.json ./
+# RUN npm ci --only=production
+# COPY . .
+# RUN mkdir -p uploads outputs
+# EXPOSE 5000
+# CMD ["node", "server.js"]
+
+# ── Production Dockerfile (multi-stage) ──────────────────
+# FROM node:20-alpine AS builder
+# WORKDIR /app
+# COPY package*.json ./
+# RUN npm ci
+# COPY . .
+# 
+# FROM node:20-alpine AS runner
+# RUN apk add --no-cache qpdf   # for PDF encryption support
+# WORKDIR /app
+# COPY --from=builder /app/node_modules ./node_modules
+# COPY --from=builder /app .
+# RUN mkdir -p uploads outputs
+# RUN addgroup -g 1001 -S nodejs && adduser -S nodeuser -u 1001
+# USER nodeuser
+# EXPOSE 5000
+# CMD ["node", "server.js"]
+
+
+# ═══════════════════════════════════════════════════════════
+# frontend/Dockerfile
+# ═══════════════════════════════════════════════════════════
+# FROM node:20-alpine AS deps
+# WORKDIR /app
+# COPY package*.json ./
+# RUN npm ci
+# 
+# FROM node:20-alpine AS builder
+# WORKDIR /app
+# COPY --from=deps /app/node_modules ./node_modules
+# COPY . .
+# RUN npm run build
+# 
+# FROM node:20-alpine AS runner
+# WORKDIR /app
+# ENV NODE_ENV production
+# RUN addgroup -g 1001 -S nodejs && adduser -S nextjs -u 1001
+# COPY --from=builder /app/public ./public
+# COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+# COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# USER nextjs
+# EXPOSE 3000
+# CMD ["node", "server.js"]
+
+
+# ═══════════════════════════════════════════════════════════
+# .dockerignore (place in backend/ and frontend/)
+# ═══════════════════════════════════════════════════════════
+# node_modules
+# .next
+# .git
+# .env
+# uploads/
+# outputs/
+# *.log

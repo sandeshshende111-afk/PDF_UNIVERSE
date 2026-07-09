@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PDFUniverse — Your 90-Day Growth Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0b0f1a;color:#f1f5f9;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Sora',system-ui,sans-serif;line-height:1.2}
+.wrap{max-width:900px;margin:0 auto;padding:40px 24px 100px}
+
+/* Header */
+.hero{text-align:center;padding:48px 0 52px}
+.badge{display:inline-block;background:#6366f120;color:#818cf8;border:1px solid #6366f133;border-radius:99px;padding:5px 16px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+.title{font-size:clamp(30px,6vw,52px);font-weight:900;letter-spacing:-.03em;margin-bottom:12px}
+.g{background:linear-gradient(135deg,#6366f1,#8b5cf6,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{color:#64748b;font-size:16px;max-width:520px;margin:0 auto 32px;line-height:1.65}
+
+/* Progress overview */
+.overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:48px}
+.ov-card{background:#161b2e;border:1px solid #ffffff0d;border-radius:16px;padding:18px;text-align:center}
+.ov-num{font-size:28px;font-weight:900;letter-spacing:-.02em;font-family:'Sora',sans-serif}
+.ov-label{font-size:12px;color:#64748b;margin-top:4px;font-weight:600}
+.ov-bar{height:4px;border-radius:99px;background:#ffffff0a;overflow:hidden;margin-top:10px}
+.ov-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#6366f1,#8b5cf6);transition:width .4s ease}
+
+/* Phase headers */
+.phase{margin-bottom:44px}
+.phase-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding:18px 20px;border-radius:16px;cursor:pointer;transition:all .2s}
+.phase-icon{font-size:24px;flex-shrink:0}
+.phase-title-wrap{flex:1}
+.phase-title{font-size:17px;font-weight:800;color:#f1f5f9;margin-bottom:2px}
+.phase-meta{font-size:12.5px;font-weight:600}
+.phase-toggle{font-size:18px;color:#64748b;transition:transform .2s}
+.phase-body{display:none}
+.phase-body.open{display:block}
+
+/* Week sections */
+.week{margin-bottom:20px}
+.week-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.week-dot{width:8px;height:8px;border-radius:99px;flex-shrink:0}
+
+/* Task items */
+.task-list{display:flex;flex-direction:column;gap:6px}
+.task{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:#161b2e;border:1px solid #ffffff08;border-radius:12px;cursor:pointer;transition:all .2s;user-select:none}
+.task:hover{border-color:#ffffff15;background:#1a2035}
+.task.done{background:#10b98108;border-color:#10b98122}
+.task.done .task-text{color:#64748b;text-decoration:line-through}
+.task.done .task-meta{color:#374151}
+.task-check{width:20px;height:20px;border-radius:6px;border:2px solid #ffffff20;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all .2s;font-size:11px}
+.task.done .task-check{background:#10b981;border-color:#10b981;color:#fff}
+.task-content{flex:1;min-width:0}
+.task-text{font-size:14px;font-weight:600;color:#e2e8f0;line-height:1.45;margin-bottom:3px;transition:all .2s}
+.task-meta{font-size:12px;color:#64748b;line-height:1.5}
+.task-tag{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-left:6px;vertical-align:middle}
+
+/* Metrics tracker */
+.metrics{background:#0f1322;border:1px solid #ffffff0d;border-radius:18px;padding:28px;margin-bottom:44px}
+.metrics h3{font-size:17px;font-weight:800;margin-bottom:18px;color:#f1f5f9}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.metric-input{background:#161b2e;border:1px solid #ffffff0d;border-radius:12px;padding:14px}
+.metric-input label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#64748b;display:block;margin-bottom:8px}
+.metric-input input{width:100%;background:transparent;border:none;font-family:'Sora',sans-serif;font-size:24px;font-weight:900;color:#f1f5f9;outline:none;padding:0}
+.metric-input input::placeholder{color:#374151}
+.metric-hint{font-size:11px;color:#374151;margin-top:5px}
+
+/* Revenue projections */
+.projections{margin-bottom:44px}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proj-card{border-radius:18px;padding:24px;text-align:center;border:1px solid #ffffff0d}
+.proj-month{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.proj-mrr{font-size:32px;font-weight:900;font-family:'Sora',sans-serif;letter-spacing:-.02em;margin-bottom:4px}
+.proj-users{font-size:12px;font-weight:600;margin-bottom:14px}
+.proj-bar-wrap{height:6px;background:#ffffff0a;border-radius:99px;overflow:hidden}
+.proj-bar{height:100%;border-radius:99px;transition:width 1s ease}
+
+/* Tips */
+.tip{display:flex;gap:10px;padding:12px 16px;background:#f59e0b0d;border:1px solid #f59e0b22;border-radius:10px;margin:14px 0;font-size:13px;color:#fbbf24;line-height:1.6}
+.tip strong{color:#fde68a}
+.info{background:#6366f10d;border-color:#6366f122;color:#818cf8}
+.info strong{color:#a5b4fc}
+
+/* Reset */
+.reset-btn{background:transparent;border:1px solid #ffffff0f;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:600;color:#374151;cursor:pointer;font-family:inherit;transition:all .15s}
+.reset-btn:hover{border-color:#ef444433;color:#f87171}
+
+@media(max-width:600px){.proj-grid{grid-template-columns:1fr}.overview{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- Hero -->
+<div class="hero">
+  <div class="badge">📅 Interactive Plan</div>
+  <h1 class="title">Your <span class="g">90-Day</span> Growth Plan</h1>
+  <p class="subtitle">A realistic, week-by-week action plan to go from zero to your first paying customers. Check off tasks as you complete them — progress is saved automatically.</p>
+  <button class="reset-btn" onclick="resetProgress()">↺ Reset Progress</button>
+</div>
+
+<!-- Progress overview -->
+<div class="overview" id="overviewCards">
+  <div class="ov-card">
+    <div class="ov-num" id="pctDone" style="color:#6366f1">0%</div>
+    <div class="ov-label">Plan Complete</div>
+    <div class="ov-bar"><div class="ov-fill" id="totalBar" style="width:0%"></div></div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-num" id="tasksDone" style="color:#10b981">0</div>
+    <div class="ov-label">Tasks Done</div>
+    <div class="ov-bar"><div class="ov-fill" id="tasksBar" style="width:0%;background:linear-gradient(90deg,#10b981,#06b6d4)"></div></div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-num" id="streak" style="color:#f59e0b">0</div>
+    <div class="ov-label">Day Streak 🔥</div>
+    <div class="ov-bar"><div class="ov-fill" id="streakBar" style="width:0%;background:linear-gradient(90deg,#f59e0b,#f97316)"></div></div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-num" id="daysLeft" style="color:#8b5cf6">90</div>
+    <div class="ov-label">Days Remaining</div>
+    <div class="ov-bar"><div class="ov-fill" id="daysBar" style="width:100%;background:linear-gradient(90deg,#8b5cf6,#6366f1)"></div></div>
+  </div>
+</div>
+
+<!-- Metrics tracker -->
+<div class="metrics">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+    <h3 style="margin:0">📊 Track Your Numbers</h3>
+    <span style="font-size:12px;color:#374151">Update weekly — saved automatically</span>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-input">
+      <label>Monthly Visitors</label>
+      <input type="number" id="m-visitors" placeholder="0" oninput="saveMet()"/>
+      <div class="metric-hint">From Google Analytics</div>
+    </div>
+    <div class="metric-input">
+      <label>Email Signups</label>
+      <input type="number" id="m-emails" placeholder="0" oninput="saveMet()"/>
+      <div class="metric-hint">From waitlist form</div>
+    </div>
+    <div class="metric-input">
+      <label>Paying Users</label>
+      <input type="number" id="m-paid" placeholder="0" oninput="saveMet()"/>
+      <div class="metric-hint">From Stripe dashboard</div>
+    </div>
+    <div class="metric-input">
+      <label>MRR ($)</label>
+      <input type="number" id="m-mrr" placeholder="0" oninput="saveMet()"/>
+      <div class="metric-hint">Monthly recurring revenue</div>
+    </div>
+    <div class="metric-input">
+      <label>Free Users</label>
+      <input type="number" id="m-free" placeholder="0" oninput="saveMet()"/>
+      <div class="metric-hint">Active free accounts</div>
+    </div>
+    <div class="metric-input">
+      <label>Conversion %</label>
+      <input type="number" id="m-conv" placeholder="0" step="0.1" oninput="saveMet()"/>
+      <div class="metric-hint">Free → Paid %</div>
+    </div>
+  </div>
+</div>
+
+<!-- Revenue projections -->
+<div class="projections">
+  <h2 style="font-size:22px;font-weight:800;margin-bottom:6px">💰 Realistic Revenue Milestones</h2>
+  <p style="color:#64748b;font-size:14px;margin-bottom:20px">Based on 3% free-to-paid conversion and $12/month average revenue per user</p>
+  <div class="proj-grid">
+    <div class="proj-card" style="background:#161b2e">
+      <div class="proj-month" style="color:#6366f1">Month 1</div>
+      <div class="proj-mrr" style="color:#6366f1">$0–$144</div>
+      <div class="proj-users" style="color:#64748b">0–12 paying users</div>
+      <div class="proj-bar-wrap"><div class="proj-bar" style="width:5%;background:#6366f1"></div></div>
+      <p style="font-size:11px;color:#374151;margin-top:10px;line-height:1.6">Focus: launch, SEO foundation, first users. Don't expect revenue yet — validate the product.</p>
+    </div>
+    <div class="proj-card" style="background:linear-gradient(160deg,#161b2e,#1a1b3e)">
+      <div class="proj-month" style="color:#8b5cf6">Month 3</div>
+      <div class="proj-mrr" style="color:#8b5cf6">$360–$1,200</div>
+      <div class="proj-users" style="color:#94a3b8">30–100 paying users</div>
+      <div class="proj-bar-wrap"><div class="proj-bar" style="width:35%;background:linear-gradient(90deg,#6366f1,#8b5cf6)"></div></div>
+      <p style="font-size:11px;color:#374151;margin-top:10px;line-height:1.6">SEO starting to work. 500–2,000 monthly visitors. Word of mouth kicking in.</p>
+    </div>
+    <div class="proj-card" style="background:linear-gradient(160deg,#1a1530,#1e1b4b)">
+      <div class="proj-month" style="color:#a78bfa">Month 6</div>
+      <div class="proj-mrr" style="color:#a78bfa">$1,200–$6,000</div>
+      <div class="proj-users" style="color:#c4b5fd">100–500 paying users</div>
+      <div class="proj-bar-wrap"><div class="proj-bar" style="width:75%;background:linear-gradient(90deg,#8b5cf6,#06b6d4)"></div></div>
+      <p style="font-size:11px;color:#64748b;margin-top:10px;line-height:1.6">SEO driving consistent organic traffic. Compounding growth from referrals and content.</p>
+    </div>
+  </div>
+</div>
+
+<!-- THE PHASES -->
+<div id="phases"></div>
+
+</div>
+
+<script>
+// ─── Plan Data ─────────────────────────────────────────────
+const PLAN = [
+  {
+    id:'p1', icon:'🚀', title:'Phase 1: Launch Week', meta:'Days 1–7 · Get your first 100 visitors',
+    color:'#6366f1', bg:'#6366f110', border:'#6366f130',
+    weeks:[
+      { label:'Day 1 — Launch Day', color:'#6366f1', tasks:[
+        { id:'t1',  text:'Deploy pdfuniverse.html to Netlify', meta:'Open DEPLOY_NOW.html and follow the 5 steps. Takes under 10 minutes.', tag:'setup', tagColor:'#6366f1' },
+        { id:'t2',  text:'Submit to Product Hunt', meta:'Go to producthunt.com/posts/new — use the exact copy from launch-kit.html', tag:'launch', tagColor:'#f59e0b' },
+        { id:'t3',  text:'Post on Reddit r/SideProject', meta:'Copy the r/SideProject post from launch-kit.html — paste it in directly', tag:'social', tagColor:'#ff4500' },
+        { id:'t4',  text:'Post Twitter/X launch thread', meta:'Copy all 7 tweets from launch-kit.html, post as a thread 1 minute apart', tag:'social', tagColor:'#1d9bf0' },
+        { id:'t5',  text:'Email 20 personal contacts', meta:'Use the personal email template from launch-kit.html. Ask for honest feedback.', tag:'outreach', tagColor:'#10b981' },
+        { id:'t6',  text:'Post on LinkedIn', meta:'Copy the LinkedIn post from launch-kit.html. Add a personal photo if possible.', tag:'social', tagColor:'#0077b5' },
+      ]},
+      { label:'Days 2–3 — Directory Blitz', color:'#8b5cf6', tasks:[
+        { id:'t7',  text:'Submit to AlternativeTo.net', meta:'List as alternative to Adobe Acrobat, iLovePDF, SmallPDF. Free, gives backlinks.', tag:'seo', tagColor:'#10b981' },
+        { id:'t8',  text:'Submit to SaaSHub.com', meta:'Fill in all fields including screenshots. Takes 10 minutes.', tag:'seo', tagColor:'#10b981' },
+        { id:'t9',  text:'Submit to Futurepedia.io', meta:'AI tools directory — huge traffic. Mention the AI summarizer feature.', tag:'seo', tagColor:'#10b981' },
+        { id:'t10', text:'Submit to There\'s An AI For That', meta:'theresanaiforthat.com — very high traffic AI directory', tag:'seo', tagColor:'#10b981' },
+        { id:'t11', text:'Post on Hacker News (Show HN)', meta:'Copy the HN post from launch-kit.html. Post on a weekday morning for best visibility.', tag:'launch', tagColor:'#f59e0b' },
+        { id:'t12', text:'Submit to G2.com (free listing)', meta:'Create a vendor account and list PDFUniverse. Takes 20 minutes.', tag:'seo', tagColor:'#10b981' },
+      ]},
+      { label:'Days 4–7 — Engage & Learn', color:'#06b6d4', tasks:[
+        { id:'t13', text:'Reply to every comment on all posts', meta:'Engagement is critical in week 1. Thank everyone, answer every question.', tag:'community', tagColor:'#6366f1' },
+        { id:'t14', text:'Post in r/entrepreneur with story angle', meta:'Use the r/entrepreneur template from launch-kit.html — slightly different story', tag:'social', tagColor:'#ff4500' },
+        { id:'t15', text:'Post on r/productivity', meta:'Use the r/productivity template. Focus on the privacy angle (files never uploaded)', tag:'social', tagColor:'#ff4500' },
+        { id:'t16', text:'Check Google Analytics — write down numbers', meta:'Open analytics.google.com → note your visitors, bounce rate, top pages', tag:'track', tagColor:'#f59e0b' },
+        { id:'t17', text:'Interview 3 users who signed up', meta:'Email them: "Got 2 minutes? I\'d love to hear what brought you here." Take notes.', tag:'research', tagColor:'#8b5cf6' },
+        { id:'t18', text:'Set up Stripe payments (see stripe-setup.html)', meta:'Create products, generate payment links, add to pro-upgrade.html', tag:'revenue', tagColor:'#10b981' },
+      ]},
+    ]
+  },
+  {
+    id:'p2', icon:'📝', title:'Phase 2: SEO & Content', meta:'Weeks 2–4 · Build traffic that compounds forever',
+    color:'#10b981', bg:'#10b98110', border:'#10b98130',
+    weeks:[
+      { label:'Week 2 — Content Foundation', color:'#10b981', tasks:[
+        { id:'t19', text:'Deploy blog-how-to-merge-pdf.html', meta:'Upload this file to Netlify. This targets "how to merge PDF" — 2.7M monthly searches.', tag:'seo', tagColor:'#10b981' },
+        { id:'t20', text:'Deploy blog-best-free-pdf-tools.html', meta:'Upload this comparison article. Targets people actively looking for PDF tools.', tag:'seo', tagColor:'#10b981' },
+        { id:'t21', text:'Submit sitemap to Google Search Console', meta:'1. Go to search.google.com/search-console 2. Add your domain 3. Submit sitemap.xml', tag:'seo', tagColor:'#10b981' },
+        { id:'t22', text:'Write 3rd blog post: "How to Compress PDF Free"', meta:'Target keyword: "compress pdf" — 1.8M monthly searches. Follow the same format as blog 1.', tag:'content', tagColor:'#06b6d4' },
+        { id:'t23', text:'Create YouTube demo video (10 min)', meta:'Screen record yourself using PDFUniverse. Title: "PDFUniverse — Free PDF Tools 2025 Demo"', tag:'video', tagColor:'#ff0000' },
+        { id:'t24', text:'Post video to YouTube', meta:'Add your website link in description. Tag: "pdf tools, merge pdf, compress pdf, free pdf"', tag:'video', tagColor:'#ff0000' },
+      ]},
+      { label:'Week 3 — Outreach & Partnerships', color:'#06b6d4', tasks:[
+        { id:'t25', text:'Send 50 cold emails to potential customers', meta:'Use the cold email template from launch-kit.html. Target: freelancers, small businesses, lawyers.', tag:'outreach', tagColor:'#3b82f6' },
+        { id:'t26', text:'Find 10 relevant Facebook groups', meta:'Search: "PDF tools", "freelancer productivity", "small business tools". Join and participate before posting.', tag:'community', tagColor:'#1877f2' },
+        { id:'t27', text:'Reach out to 3 productivity bloggers', meta:'Email: "I built a free PDF tool — would you consider reviewing it for your audience?"', tag:'pr', tagColor:'#8b5cf6' },
+        { id:'t28', text:'Write 4th blog post: "PDF to Word Converter"', meta:'Target: "pdf to word" — 3.4M monthly searches. Highest traffic keyword.', tag:'content', tagColor:'#06b6d4' },
+        { id:'t29', text:'Set up email automation (welcome sequence)', meta:'Use Resend.com or Mailchimp. Load the email templates from email-templates.html.', tag:'email', tagColor:'#6366f1' },
+        { id:'t30', text:'Add cookie consent + analytics to site', meta:'Follow analytics-and-cookies.html — copy the code snippets into pdfuniverse.html', tag:'setup', tagColor:'#6366f1' },
+      ]},
+      { label:'Week 4 — Optimize & Double Down', color:'#f59e0b', tasks:[
+        { id:'t31', text:'Review analytics — which source converts best?', meta:'GA4 → Acquisition → Traffic Acquisition. Find your #1 traffic source and focus on it.', tag:'track', tagColor:'#f59e0b' },
+        { id:'t32', text:'A/B test your Pro upgrade headline', meta:'Change the h1 on pro-upgrade.html. Try "Go Pro" vs "Unlock Unlimited PDFs" for 1 week each.', tag:'optimize', tagColor:'#f97316' },
+        { id:'t33', text:'Add your real Stripe payment links', meta:'Go to stripe-setup.html and follow the 5 steps. Replace the placeholder links in pro-upgrade.html.', tag:'revenue', tagColor:'#10b981' },
+        { id:'t34', text:'Email your waitlist about new blog posts', meta:'Send the newsletter template from email-templates.html to everyone who signed up.', tag:'email', tagColor:'#6366f1' },
+        { id:'t35', text:'Post week 4 progress update on Reddit/Twitter', meta:'"1 month in — here\'s what I built and what happened:" Honesty performs well.', tag:'social', tagColor:'#1d9bf0' },
+        { id:'t36', text:'Update your metrics tracker above', meta:'Fill in visitors, emails, paid users, MRR. Start tracking week over week.', tag:'track', tagColor:'#f59e0b' },
+      ]},
+    ]
+  },
+  {
+    id:'p3', icon:'📈', title:'Phase 3: Scale What Works', meta:'Weeks 5–8 · Double down on your best channels',
+    color:'#f59e0b', bg:'#f59e0b10', border:'#f59e0b30',
+    weeks:[
+      { label:'Week 5–6 — Content Engine', color:'#f59e0b', tasks:[
+        { id:'t37', text:'Publish 2 more SEO blog posts this week', meta:'Topics: "how to split PDF", "jpg to pdf converter", "pdf editor free". Use blog-1 format.', tag:'content', tagColor:'#06b6d4' },
+        { id:'t38', text:'Create Pinterest pins for each blog post', meta:'PDF productivity tips perform well on Pinterest. Use Canva (free) to make visual pins.', tag:'social', tagColor:'#e60023' },
+        { id:'t39', text:'Apply to AppSumo marketplace', meta:'appsumo.com/partners — lifetime deal can generate 500+ users in one week. Apply now.', tag:'revenue', tagColor:'#10b981' },
+        { id:'t40', text:'Set up affiliate program', meta:'Use Rewardful.com ($29/mo) — gives affiliates 30% commission. Drives word-of-mouth growth.', tag:'revenue', tagColor:'#10b981' },
+        { id:'t41', text:'Post on Indie Hackers', meta:'indiehackers.com — write about your journey. "From idea to $X MRR in 30 days" format works great.', tag:'community', tagColor:'#6366f1' },
+        { id:'t42', text:'Create a short-form TikTok/Reels video', meta:'"POV: You just found the best free PDF tool" format. Show the tool working. Takes 20 min.', tag:'video', tagColor:'#ff0050' },
+      ]},
+      { label:'Week 7–8 — Revenue Focus', color:'#10b981', tasks:[
+        { id:'t43', text:'Set up yearly plan discount (25% off)', meta:'In Stripe: duplicate your monthly product → set to annual billing → add to pro-upgrade.html', tag:'revenue', tagColor:'#10b981' },
+        { id:'t44', text:'Email users who hit the 5-task daily limit', meta:'These are your warmest leads. Use the upgrade email template from email-templates.html.', tag:'email', tagColor:'#6366f1' },
+        { id:'t45', text:'Add exit-intent popup to site', meta:'Show a "Get 7 days Pro free" popup when users move their mouse to close the tab. Boosts conversion 15-25%.', tag:'optimize', tagColor:'#f97316' },
+        { id:'t46', text:'Reach out to 5 micro-influencers (10K–100K)', meta:'Find productivity YouTubers/creators. Offer free Pro account + 20% affiliate commission.', tag:'pr', tagColor:'#8b5cf6' },
+        { id:'t47', text:'Create a "Refer a Friend" feature', meta:'Simple: create a unique URL per user, track with UTM params. Give both users 3 free Pro days.', tag:'growth', tagColor:'#06b6d4' },
+        { id:'t48', text:'Apply to be listed on Chrome Web Store', meta:'A Chrome extension wrapper (opens your site) gets more visibility. Use chrome.google.com/webstore/developer', tag:'distribution', tagColor:'#4285f4' },
+      ]},
+    ]
+  },
+  {
+    id:'p4', icon:'🏆', title:'Phase 4: Month 3 — Compound', meta:'Days 61–90 · Systems, hiring, and scaling to $5K MRR',
+    color:'#8b5cf6', bg:'#8b5cf610', border:'#8b5cf630',
+    weeks:[
+      { label:'Days 61–75 — Systematize', color:'#8b5cf6', tasks:[
+        { id:'t49', text:'Write your "How I built this" story', meta:'Blog post or Medium article. Gets huge traction — devs and founders share these widely.', tag:'content', tagColor:'#06b6d4' },
+        { id:'t50', text:'Create an onboarding email sequence (5 emails)', meta:'Day 1, 3, 7, 14, 30 after signup. Use email-templates.html as base. Guide users to Pro.', tag:'email', tagColor:'#6366f1' },
+        { id:'t51', text:'Optimize your #1 performing blog post', meta:'Add more sections, images, FAQ schema. Update the publish date. Improves Google ranking.', tag:'seo', tagColor:'#10b981' },
+        { id:'t52', text:'Set up live chat (Crisp.chat — free)', meta:'crisp.chat is free for basic chat. Adds credibility and catches users about to churn.', tag:'support', tagColor:'#3b82f6' },
+        { id:'t53', text:'Write case study: "How [user] saved 3hr/week"', meta:'Interview your happiest customer. Turn their story into a landing page. Converts well.', tag:'content', tagColor:'#06b6d4' },
+        { id:'t54', text:'Submit to Product Hunt a second time (new feature)', meta:'Launch the AI summarizer as a separate PH post: "PDFUniverse AI — Claude-powered PDF analysis"', tag:'launch', tagColor:'#f59e0b' },
+      ]},
+      { label:'Days 76–90 — The Review', color:'#06b6d4', tasks:[
+        { id:'t55', text:'Review all 90-day metrics vs projections', meta:'Compare actual visitors, MRR, users to the projections above. What beat expectations?', tag:'track', tagColor:'#f59e0b' },
+        { id:'t56', text:'Survey all paying users (3 questions)', meta:'"What made you upgrade? What almost stopped you? What one feature would you add?"', tag:'research', tagColor:'#8b5cf6' },
+        { id:'t57', text:'Plan next 90 days based on what worked', meta:'Double down on top 1-2 channels. Cut what didn\'t work. Hire a VA if MRR > $1,000.', tag:'strategy', tagColor:'#6366f1' },
+        { id:'t58', text:'Post a "90-day results" update publicly', meta:'Transparent revenue reports build massive trust and get shared. "I made $X in 90 days" gets traffic.', tag:'social', tagColor:'#1d9bf0' },
+        { id:'t59', text:'Set up Google Search Console alerts', meta:'Get notified when your pages rank for new keywords. Find opportunities you didn\'t target.', tag:'seo', tagColor:'#10b981' },
+        { id:'t60', text:'Celebrate — you built a real business 🎉', meta:'Seriously. Most people quit before day 30. You made it to day 90. That\'s huge.', tag:'🎉', tagColor:'#f59e0b' },
+      ]},
+    ]
+  }
+];
+
+// ─── State ─────────────────────────────────────────────────
+let done = new Set(JSON.parse(localStorage.getItem('plan_done') || '[]'));
+let startDate = localStorage.getItem('plan_start') || null;
+
+function saveState() {
+  localStorage.setItem('plan_done', JSON.stringify([...done]));
+}
+
+function saveMet() {
+  ['visitors','emails','paid','mrr','free','conv'].forEach(k => {
+    const v = document.getElementById('m-' + k)?.value;
+    if (v !== undefined) localStorage.setItem('met_' + k, v);
+  });
+}
+
+function loadMet() {
+  ['visitors','emails','paid','mrr','free','conv'].forEach(k => {
+    const v = localStorage.getItem('met_' + k);
+    const el = document.getElementById('m-' + k);
+    if (v && el) el.value = v;
+  });
+}
+
+function toggleTask(id) {
+  if (done.has(id)) done.delete(id);
+  else {
+    done.add(id);
+    if (!startDate) {
+      startDate = new Date().toISOString();
+      localStorage.setItem('plan_start', startDate);
+    }
+  }
+  saveState();
+  updateProgress();
+  // Update individual task visuals
+  const el = document.getElementById('task-' + id);
+  if (el) {
+    el.classList.toggle('done', done.has(id));
+    const chk = el.querySelector('.task-check');
+    if (chk) chk.textContent = done.has(id) ? '✓' : '';
+  }
+}
+
+function updateProgress() {
+  const total = PLAN.reduce((a,p) => a + p.weeks.reduce((b,w) => b + w.tasks.length, 0), 0);
+  const n = done.size;
+  const pct = total ? Math.round((n/total)*100) : 0;
+  document.getElementById('pctDone').textContent = pct + '%';
+  document.getElementById('tasksDone').textContent = n;
+  document.getElementById('totalBar').style.width = pct + '%';
+  document.getElementById('tasksBar').style.width = (n/total*100) + '%';
+
+  // Streak
+  const today = new Date().toDateString();
+  const last = localStorage.getItem('last_active');
+  let streak = parseInt(localStorage.getItem('streak') || '0');
+  if (last !== today) {
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    streak = (last === yesterday) ? streak + 1 : (done.size > 0 ? 1 : 0);
+    localStorage.setItem('streak', streak);
+    localStorage.setItem('last_active', today);
+  }
+  document.getElementById('streak').textContent = streak;
+  document.getElementById('streakBar').style.width = Math.min(streak * 10, 100) + '%';
+
+  // Days left
+  const daysGone = startDate ? Math.floor((Date.now() - new Date(startDate).getTime()) / 86400000) : 0;
+  const dLeft = Math.max(90 - daysGone, 0);
+  document.getElementById('daysLeft').textContent = dLeft;
+  document.getElementById('daysBar').style.width = (dLeft / 90 * 100) + '%';
+}
+
+function togglePhase(id) {
+  const body = document.getElementById('body-' + id);
+  const icon = document.getElementById('icon-' + id);
+  if (!body || !icon) return;
+  const open = body.classList.contains('open');
+  body.classList.toggle('open', !open);
+  icon.style.transform = open ? '' : 'rotate(180deg)';
+}
+
+function resetProgress() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  done.clear();
+  startDate = null;
+  localStorage.removeItem('plan_done');
+  localStorage.removeItem('plan_start');
+  localStorage.removeItem('streak');
+  localStorage.removeItem('last_active');
+  buildPlan();
+  updateProgress();
+}
+
+// ─── Render ─────────────────────────────────────────────────
+function buildPlan() {
+  const container = document.getElementById('phases');
+  container.innerHTML = '';
+
+  PLAN.forEach((phase, pi) => {
+    const allTasks = phase.weeks.flatMap(w => w.tasks);
+    const pDone = allTasks.filter(t => done.has(t.id)).length;
+    const pPct = allTasks.length ? Math.round(pDone / allTasks.length * 100) : 0;
+
+    const div = document.createElement('div');
+    div.className = 'phase';
+    div.innerHTML = `
+      <div class="phase-header" onclick="togglePhase('${phase.id}')"
+        style="background:${phase.bg};border:1px solid ${phase.border}">
+        <div class="phase-icon">${phase.icon}</div>
+        <div class="phase-title-wrap">
+          <div class="phase-title">${phase.title}</div>
+          <div class="phase-meta" style="color:${phase.color}">${phase.meta} &nbsp;·&nbsp; ${pDone}/${allTasks.length} tasks</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-size:20px;font-weight:900;color:${phase.color};font-family:'Sora',sans-serif">${pPct}%</div>
+          <div style="font-size:10px;color:#374151;margin-top:2px">complete</div>
+        </div>
+        <div class="phase-toggle" id="icon-${phase.id}" style="font-size:16px;color:${phase.color}">▼</div>
+      </div>
+      <div class="phase-body${pi === 0 ? ' open' : ''}" id="body-${phase.id}">
+        ${phase.weeks.map(week => `
+          <div class="week">
+            <div class="week-label">
+              <div class="week-dot" style="background:${week.color}"></div>
+              <span style="color:${week.color}">${week.label}</span>
+            </div>
+            <div class="task-list">
+              ${week.tasks.map(task => `
+                <div class="task${done.has(task.id) ? ' done' : ''}" id="task-${task.id}" onclick="toggleTask('${task.id}')">
+                  <div class="task-check">${done.has(task.id) ? '✓' : ''}</div>
+                  <div class="task-content">
+                    <div class="task-text">
+                      ${task.text}
+                      <span class="task-tag" style="background:${task.tagColor}18;color:${task.tagColor};border:1px solid ${task.tagColor}30">${task.tag}</span>
+                    </div>
+                    <div class="task-meta">${task.meta}</div>
+                  </div>
+                </div>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>`;
+    container.appendChild(div);
+  });
+}
+
+// ─── Init ───────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  buildPlan();
+  updateProgress();
+  loadMet();
+});
+</script>
+</body>
+</html>
