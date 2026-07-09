@@ -11,7 +11,6 @@ const { PDFDocument, StandardFonts, degrees, rgb } = require("pdf-lib");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const PUBLIC_URL = process.env.API_URL || `http://localhost:${PORT}`;
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 const UPLOAD_DIR = path.join(__dirname, "uploads");
 const OUTPUT_DIR = path.join(__dirname, "outputs");
@@ -46,8 +45,12 @@ async function savePdf(pdfDoc, prefix) {
   return {
     filename,
     sizeBytes: bytes.byteLength,
-    downloadUrl: `${PUBLIC_URL}/outputs/${filename}`,
   };
+}
+
+function downloadUrl(req, filename) {
+  const origin = process.env.API_URL || `${req.protocol}://${req.get("host")}`;
+  return `${origin}/outputs/${filename}`;
 }
 
 function cleanup(files = []) {
@@ -74,7 +77,7 @@ app.post("/api/pdf/merge", upload.array("files", 20), async (req, res, next) => 
     }
 
     const output = await savePdf(merged, "merged");
-    res.json({ success: true, filename: "merged.pdf", pageCount: merged.getPageCount(), ...output });
+    res.json({ success: true, filename: "merged.pdf", pageCount: merged.getPageCount(), ...output, downloadUrl: downloadUrl(req, output.filename) });
   } catch (error) {
     next(error);
   } finally {
@@ -92,7 +95,8 @@ app.post("/api/pdf/split", upload.single("file"), async (req, res, next) => {
     first.addPage(page);
     const output = await savePdf(first, "split-page-1");
 
-    res.json({ success: true, filename: "page-1.pdf", totalParts: 1, parts: [{ pages: 1, ...output }], ...output });
+    const url = downloadUrl(req, output.filename);
+    res.json({ success: true, filename: "page-1.pdf", totalParts: 1, parts: [{ pages: 1, ...output, downloadUrl: url }], ...output, downloadUrl: url });
   } catch (error) {
     next(error);
   } finally {
@@ -121,6 +125,7 @@ app.post("/api/pdf/compress", upload.single("file"), async (req, res, next) => {
       savedBytes,
       savedPercent: originalSize ? Math.round((savedBytes / originalSize) * 1000) / 10 : 0,
       ...output,
+      downloadUrl: downloadUrl(req, output.filename),
     });
   } catch (error) {
     next(error);
@@ -137,7 +142,7 @@ app.post("/api/pdf/rotate", upload.single("file"), async (req, res, next) => {
       page.setRotation(degrees((page.getRotation().angle + 90) % 360));
     }
     const output = await savePdf(pdf, "rotated");
-    res.json({ success: true, filename: "rotated.pdf", ...output });
+    res.json({ success: true, filename: "rotated.pdf", ...output, downloadUrl: downloadUrl(req, output.filename) });
   } catch (error) {
     next(error);
   } finally {
@@ -163,7 +168,7 @@ app.post("/api/pdf/watermark", upload.single("file"), async (req, res, next) => 
       });
     }
     const output = await savePdf(pdf, "watermarked");
-    res.json({ success: true, filename: "watermarked.pdf", ...output });
+    res.json({ success: true, filename: "watermarked.pdf", ...output, downloadUrl: downloadUrl(req, output.filename) });
   } catch (error) {
     next(error);
   } finally {
@@ -190,5 +195,5 @@ app.use((error, _req, res, _next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`PDFUniverse API running on ${PUBLIC_URL}`);
+  console.log(`PDFUniverse API running on port ${PORT}`);
 });
